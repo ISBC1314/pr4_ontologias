@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://www.owl-ontologies.com/Ontology1401986134.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1401986134.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Vaca">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pato"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:ID="Mascota"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Vegetariano"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Amante_animales">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Persona"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="Tiene_mascota"/>
+        </owl:onProperty>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Comida"/>
+  <owl:Class rdf:ID="PartesDeAnimal">
+    <rdfs:subClassOf rdf:resource="#Comida"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Propietario_de_gato">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Tiene_mascota"/>
+        <owl:someValuesFrom>
+          <owl:Class rdf:ID="Gato"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="Gustar"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Gato"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Dueño"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Gato">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mascota"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Perro"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Perro">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mascota"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Gato"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Persona">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mascota"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Tiene_mascota"/>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:minCardinality>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Animal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Gatero">
+    <rdfs:subClassOf rdf:resource="#Persona"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Gustar"/>
+        <owl:someValuesFrom rdf:resource="#Gato"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Sesos_oveja">
+    <rdfs:subClassOf rdf:resource="#PartesDeAnimal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Propietario_de_perro">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Perro"/>
+        <owl:onProperty rdf:resource="#Tiene_mascota"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Gustar"/>
+        <owl:someValuesFrom rdf:resource="#Perro"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Dueño"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Vegetariano">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mascota"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="#Animal"/>
+                  <owl:Class rdf:about="#PartesDeAnimal"/>
+                </owl:unionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="Comen"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Animal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Perrero">
+    <rdfs:subClassOf rdf:resource="#Persona"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Perro"/>
+        <owl:onProperty rdf:resource="#Gustar"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tigre">
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf>
+          <owl:Class rdf:about="#Mascota"/>
+        </owl:complementOf>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Otros_animales"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Loca">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Comen"/>
+        <owl:someValuesFrom rdf:resource="#Sesos_oveja"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Vaca"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Mascota">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Animal"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Vegetariano"/>
+    <owl:disjointWith rdf:resource="#Persona"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Dueño">
+    <rdfs:subClassOf rdf:resource="#Persona"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >1</owl:minCardinality>
+        <owl:onProperty rdf:resource="#Tiene_mascota"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Vaca_2">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pato"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class>
+        <owl:complementOf rdf:resource="#Mascota"/>
+      </owl:Class>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Vegetariano"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pato">
+    <rdfs:subClassOf rdf:resource="#Vegetariano"/>
+    <owl:disjointWith rdf:resource="#Vaca"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Otros_animales">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Animal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Normal">
+    <rdfs:subClassOf rdf:resource="#Vaca"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#Comen"/>
+        <owl:someValuesFrom rdf:resource="#Comida"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </owl:Class>
+  <Gato rdf:ID="Luisi"/>
+  <Persona rdf:ID="Luis">
+    <Tiene_mascota>
+      <Tigre rdf:ID="Titi"/>
+    </Tiene_mascota>
+    <Tiene_mascota>
+      <Pato rdf:ID="Fluffy"/>
+    </Tiene_mascota>
+    <Tiene_mascota>
+      <Perro rdf:ID="Cooper"/>
+    </Tiene_mascota>
+  </Persona>
+  <Persona rdf:ID="Alfredo"/>
+  <Pato rdf:ID="Louie"/>
+  <Vaca rdf:ID="Vili"/>
+  <Pato rdf:ID="Dewey"/>
+  <Pato rdf:ID="Huey"/>
+  <Perro rdf:ID="Perro_57"/>
+  <Persona rdf:ID="Marisa">
+    <Tiene_mascota rdf:resource="#Luisi"/>
+    <Tiene_mascota>
+      <Gato rdf:ID="Sisi"/>
+    </Tiene_mascota>
+  </Persona>
+  <Persona rdf:ID="Carlos">
+    <Tiene_mascota rdf:resource="#Dewey"/>
+    <Tiene_mascota rdf:resource="#Huey"/>
+    <Tiene_mascota>
+      <Perro rdf:ID="Flipi"/>
+    </Tiene_mascota>
+    <Tiene_mascota>
+      <Perro rdf:ID="Coco"/>
+    </Tiene_mascota>
+  </Persona>
+  <Gato rdf:ID="Misi"/>
+  <Perro rdf:ID="Simba"/>
+  <Persona rdf:ID="Amalia">
+    <Tiene_mascota rdf:resource="#Coco"/>
+    <Tiene_mascota rdf:resource="#Flipi"/>
+    <Tiene_mascota rdf:resource="#Huey"/>
+    <Tiene_mascota rdf:resource="#Dewey"/>
+  </Persona>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
