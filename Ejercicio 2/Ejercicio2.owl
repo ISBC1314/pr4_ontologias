@@ -7,6 +7,129 @@
     xmlns:owl="http://www.w3.org/2002/07/owl#"
   xml:base="http://www.owl-ontologies.com/Ontology1402519238.owl">
   <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Hija">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Hijos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Hijos">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Personas"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Yerno">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Yernos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Nieto">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Nietos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Abuelo">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Abuelos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Hermanos">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Suegro">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Suegros"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Primos">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sobrino">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Sobrinos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Cuñados">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Prima">
+    <rdfs:subClassOf rdf:resource="#Primos"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Hijo">
+    <rdfs:subClassOf rdf:resource="#Hijos"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Abuela">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Abuelos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tios">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Sobrina">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Sobrinos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Nietos">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Yerna">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Yernos"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Sobrinos">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Madre">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Padres"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Padres">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Hermano">
+    <rdfs:subClassOf rdf:resource="#Hermanos"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Tia">
+    <rdfs:subClassOf rdf:resource="#Tios"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Hermana">
+    <rdfs:subClassOf rdf:resource="#Hermanos"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Suegra">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Suegros"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Primo">
+    <rdfs:subClassOf rdf:resource="#Primos"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Suegros">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Tio">
+    <rdfs:subClassOf rdf:resource="#Tios"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Padre">
+    <rdfs:subClassOf rdf:resource="#Padres"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Nieta">
+    <rdfs:subClassOf rdf:resource="#Nietos"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Cuñado">
+    <rdfs:subClassOf rdf:resource="#Cuñados"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Cuñada">
+    <rdfs:subClassOf rdf:resource="#Cuñados"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Abuelos">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Yernos">
+    <rdfs:subClassOf rdf:resource="#Personas"/>
+  </owl:Class>
 </rdf:RDF>
 
 <!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
