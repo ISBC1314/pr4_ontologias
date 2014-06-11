@@ -228,14 +228,30 @@
     <rdfs:domain rdf:resource="#Persona"/>
     <owl:inverseOf rdf:resource="#Mascota_de"/>
     <rdfs:range rdf:resource="#Mascota"/>
+    <rdfs:subPropertyOf rdf:resource="#Gustan"/>
   </owl:ObjectProperty>
-  <Gato rdf:ID="Luisi"/>
+  <Gato rdf:ID="Luisi">
+    <Mascota_de>
+      <Persona rdf:ID="Marisa">
+        <Tiene_mascota>
+          <Gato rdf:ID="Sisi">
+            <Mascota_de rdf:resource="#Marisa"/>
+          </Gato>
+        </Tiene_mascota>
+        <Tiene_mascota rdf:resource="#Luisi"/>
+      </Persona>
+    </Mascota_de>
+  </Gato>
   <Persona rdf:ID="Luis">
     <Tiene_mascota>
-      <Perro rdf:ID="Cooper"/>
+      <Perro rdf:ID="Cooper">
+        <Mascota_de rdf:resource="#Luis"/>
+      </Perro>
     </Tiene_mascota>
     <Tiene_mascota>
-      <Pato rdf:ID="Fluffy"/>
+      <Pato rdf:ID="Fluffy">
+        <Mascota_de rdf:resource="#Luis"/>
+      </Pato>
     </Tiene_mascota>
     <Tiene_mascota>
       <Tigre rdf:ID="Titi"/>
@@ -244,33 +260,38 @@
   <Persona rdf:ID="Alfredo"/>
   <Pato rdf:ID="Louie"/>
   <Vaca rdf:ID="Vili"/>
-  <Pato rdf:ID="Dewey"/>
-  <Pato rdf:ID="Huey"/>
-  <Perro rdf:ID="Perro_57"/>
-  <Persona rdf:ID="Marisa">
-    <Tiene_mascota>
-      <Gato rdf:ID="Sisi"/>
-    </Tiene_mascota>
-    <Tiene_mascota rdf:resource="#Luisi"/>
-  </Persona>
-  <Persona rdf:ID="Carlos">
-    <Tiene_mascota>
-      <Perro rdf:ID="Coco"/>
-    </Tiene_mascota>
-    <Tiene_mascota>
-      <Perro rdf:ID="Flipi"/>
-    </Tiene_mascota>
-    <Tiene_mascota rdf:resource="#Huey"/>
-    <Tiene_mascota rdf:resource="#Dewey"/>
-  </Persona>
+  <Pato rdf:ID="Dewey">
+    <Mascota_de>
+      <Persona rdf:ID="Carlos">
+        <Tiene_mascota>
+          <Perro rdf:ID="Coco">
+            <Mascota_de rdf:resource="#Carlos"/>
+          </Perro>
+        </Tiene_mascota>
+        <Tiene_mascota>
+          <Perro rdf:ID="Flipi">
+            <Mascota_de rdf:resource="#Carlos"/>
+          </Perro>
+        </Tiene_mascota>
+        <Tiene_mascota>
+          <Pato rdf:ID="Huey">
+            <Mascota_de rdf:resource="#Carlos"/>
+            <Mascota_de>
+              <Persona rdf:ID="Amalia">
+                <Tiene_mascota rdf:resource="#Huey"/>
+                <Tiene_mascota rdf:resource="#Dewey"/>
+                <Tiene_mascota rdf:resource="#Flipi"/>
+                <Tiene_mascota rdf:resource="#Coco"/>
+              </Persona>
+            </Mascota_de>
+          </Pato>
+        </Tiene_mascota>
+        <Tiene_mascota rdf:resource="#Dewey"/>
+      </Persona>
+    </Mascota_de>
+  </Pato>
   <Gato rdf:ID="Misi"/>
   <Perro rdf:ID="Simba"/>
-  <Persona rdf:ID="Amalia">
-    <Tiene_mascota rdf:resource="#Dewey"/>
-    <Tiene_mascota rdf:resource="#Huey"/>
-    <Tiene_mascota rdf:resource="#Flipi"/>
-    <Tiene_mascota rdf:resource="#Coco"/>
-  </Persona>
 </rdf:RDF>
 
 <!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->

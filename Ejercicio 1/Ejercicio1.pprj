@@ -1,4 +1,4 @@
-; Wed Jun 11 17:51:42 CEST 2014
+; Wed Jun 11 18:19:10 CEST 2014
 ; 
 ;+ (version "3.3.1")
 ;+ (build "Build 430")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ejercicio1_ProjectKB_Instance_4404]
-		[Ejercicio1_ProjectKB_Instance_4405]
-		[Ejercicio1_ProjectKB_Instance_4406]
-		[Ejercicio1_ProjectKB_Instance_4407]
-		[Ejercicio1_ProjectKB_Instance_4408]))
+		[Ejercicio1_ProjectKB_Instance_4492]
+		[Ejercicio1_ProjectKB_Instance_4493]
+		[Ejercicio1_ProjectKB_Instance_4494]
+		[Ejercicio1_ProjectKB_Instance_4495]
+		[Ejercicio1_ProjectKB_Instance_4496]))
 
 ([CLSES_TAB] of  Widget
 
@@ -91,27 +91,27 @@
 	(property_list [Ejercicio1_ProjectKB_Instance_5])
 	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
 
-([Ejercicio1_ProjectKB_Instance_4404] of  String
+([Ejercicio1_ProjectKB_Instance_4492] of  String
 
 	(name "owl:Class")
 	(string_value "%3ANAME"))
 
-([Ejercicio1_ProjectKB_Instance_4405] of  String
+([Ejercicio1_ProjectKB_Instance_4493] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ejercicio1_ProjectKB_Instance_4406] of  String
+([Ejercicio1_ProjectKB_Instance_4494] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ejercicio1_ProjectKB_Instance_4407] of  String
+([Ejercicio1_ProjectKB_Instance_4495] of  String
 
 	(name "owl:Thing")
 	(string_value "%3ANAME"))
 
-([Ejercicio1_ProjectKB_Instance_4408] of  String
+([Ejercicio1_ProjectKB_Instance_4496] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
