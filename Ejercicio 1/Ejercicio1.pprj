@@ -1,4 +1,4 @@
-; Thu Jun 05 20:48:21 CEST 2014
+; Wed Jun 11 17:51:42 CEST 2014
 ; 
 ;+ (version "3.3.1")
 ;+ (build "Build 430")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ejercicio1_ProjectKB_Instance_10548]
-		[Ejercicio1_ProjectKB_Instance_10549]
-		[Ejercicio1_ProjectKB_Instance_10550]
-		[Ejercicio1_ProjectKB_Instance_10551]
-		[Ejercicio1_ProjectKB_Instance_10552]))
+		[Ejercicio1_ProjectKB_Instance_4404]
+		[Ejercicio1_ProjectKB_Instance_4405]
+		[Ejercicio1_ProjectKB_Instance_4406]
+		[Ejercicio1_ProjectKB_Instance_4407]
+		[Ejercicio1_ProjectKB_Instance_4408]))
 
 ([CLSES_TAB] of  Widget
 
@@ -34,184 +34,8 @@
 	(property_list [Ejercicio1_ProjectKB_Instance_11])
 	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
 
-([Ejercicio1_ProjectKB_Instance_10336] of  Widget
-
-	(is_hidden FALSE)
-	(name "MarisaClass")
-	(property_list [Ejercicio1_ProjectKB_Instance_10483])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
-
-([Ejercicio1_ProjectKB_Instance_10483] of  Property_List
-
-	(properties
-		[Ejercicio1_ProjectKB_Instance_10484]
-		[Ejercicio1_ProjectKB_Instance_10487]
-		[Ejercicio1_ProjectKB_Instance_10490]
-		[Ejercicio1_ProjectKB_Instance_10493]
-		[Ejercicio1_ProjectKB_Instance_10495]
-		[Ejercicio1_ProjectKB_Instance_10497]
-		[Ejercicio1_ProjectKB_Instance_10499]
-		[Ejercicio1_ProjectKB_Instance_10501]
-		[Ejercicio1_ProjectKB_Instance_10503]
-		[Ejercicio1_ProjectKB_Instance_10505]))
-
-([Ejercicio1_ProjectKB_Instance_10484] of  Widget
-
-	(height 0)
-	(is_hidden FALSE)
-	(label "Name")
-	(name ":NAME")
-	(property_list [Ejercicio1_ProjectKB_Instance_10485])
-	(width 0)
-	(x 0)
-	(y 0))
-
-([Ejercicio1_ProjectKB_Instance_10485] of  Property_List
-
-	(properties [Ejercicio1_ProjectKB_Instance_10486]))
-
-([Ejercicio1_ProjectKB_Instance_10486] of  Boolean
-
-	(boolean_value TRUE)
-	(name "DisabledByUser"))
-
-([Ejercicio1_ProjectKB_Instance_10487] of  Property_List
-
-	(name "layout properties")
-	(properties
-		[Ejercicio1_ProjectKB_Instance_10488]
-		[Ejercicio1_ProjectKB_Instance_10489]))
-
-([Ejercicio1_ProjectKB_Instance_10488] of  String
-
-	(name "horizontal_stretcher")
-	(string_value "<<all>>"))
-
-([Ejercicio1_ProjectKB_Instance_10489] of  String
-
-	(name "vertical_stretcher")
-	(string_value "<<none>>"))
-
-([Ejercicio1_ProjectKB_Instance_10490] of  Widget
-
-	(height 180)
-	(is_hidden FALSE)
-	(name "protege:inferredType")
-	(property_list [Ejercicio1_ProjectKB_Instance_10491])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.HeaderWidget")
-	(width 550)
-	(x 0)
-	(y 0))
-
-([Ejercicio1_ProjectKB_Instance_10491] of  Property_List
-
-	(properties [Ejercicio1_ProjectKB_Instance_10492]))
-
-([Ejercicio1_ProjectKB_Instance_10492] of  Boolean
-
-	(boolean_value FALSE)
-	(name "DisabledByUser"))
-
-([Ejercicio1_ProjectKB_Instance_10493] of  Widget
-
-	(is_hidden FALSE)
-	(name "owl:versionInfo")
-	(property_list [Ejercicio1_ProjectKB_Instance_10494]))
-
-([Ejercicio1_ProjectKB_Instance_10494] of  Property_List
-)
-
-([Ejercicio1_ProjectKB_Instance_10495] of  Widget
-
-	(is_hidden FALSE)
-	(name "rdfs:isDefinedBy")
-	(property_list [Ejercicio1_ProjectKB_Instance_10496]))
-
-([Ejercicio1_ProjectKB_Instance_10496] of  Property_List
-)
-
-([Ejercicio1_ProjectKB_Instance_10497] of  Widget
-
-	(is_hidden FALSE)
-	(name "rdfs:comment")
-	(property_list [Ejercicio1_ProjectKB_Instance_10498]))
-
-([Ejercicio1_ProjectKB_Instance_10498] of  Property_List
-)
-
-([Ejercicio1_ProjectKB_Instance_10499] of  Widget
-
-	(is_hidden FALSE)
-	(name "rdfs:seeAlso")
-	(property_list [Ejercicio1_ProjectKB_Instance_10500]))
-
-([Ejercicio1_ProjectKB_Instance_10500] of  Property_List
-)
-
-([Ejercicio1_ProjectKB_Instance_10501] of  Widget
-
-	(is_hidden FALSE)
-	(name "rdfs:label")
-	(property_list [Ejercicio1_ProjectKB_Instance_10502]))
-
-([Ejercicio1_ProjectKB_Instance_10502] of  Property_List
-)
-
-([Ejercicio1_ProjectKB_Instance_10503] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "Comen")
-	(property_list [Ejercicio1_ProjectKB_Instance_10504])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.MultiResourceWidget")
-	(width 200)
-	(x 0)
-	(y 180))
-
-([Ejercicio1_ProjectKB_Instance_10504] of  Property_List
-)
-
-([Ejercicio1_ProjectKB_Instance_10505] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "Tiene_mascota")
-	(property_list [Ejercicio1_ProjectKB_Instance_10506])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.MultiResourceWidget")
-	(width 200)
-	(x 0)
-	(y 300))
-
-([Ejercicio1_ProjectKB_Instance_10506] of  Property_List
-)
-
 ([Ejercicio1_ProjectKB_Instance_10542] of  Property_List
 )
-
-([Ejercicio1_ProjectKB_Instance_10548] of  String
-
-	(name "owl:Class")
-	(string_value "%3ANAME"))
-
-([Ejercicio1_ProjectKB_Instance_10549] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ejercicio1_ProjectKB_Instance_10550] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ejercicio1_ProjectKB_Instance_10551] of  String
-
-	(name "owl:Thing")
-	(string_value "%3ANAME"))
-
-([Ejercicio1_ProjectKB_Instance_10552] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
 
 ([Ejercicio1_ProjectKB_Instance_11] of  Property_List
 )
@@ -266,6 +90,31 @@
 	(is_hidden TRUE)
 	(property_list [Ejercicio1_ProjectKB_Instance_5])
 	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+
+([Ejercicio1_ProjectKB_Instance_4404] of  String
+
+	(name "owl:Class")
+	(string_value "%3ANAME"))
+
+([Ejercicio1_ProjectKB_Instance_4405] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ejercicio1_ProjectKB_Instance_4406] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Ejercicio1_ProjectKB_Instance_4407] of  String
+
+	(name "owl:Thing")
+	(string_value "%3ANAME"))
+
+([Ejercicio1_ProjectKB_Instance_4408] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
 
 ([Ejercicio1_ProjectKB_Instance_5] of  Property_List
 )
@@ -7203,12 +7052,12 @@
 		[KB_713803_Instance_693]
 		[KB_313796_Instance_943]
 		[KB_938545_Instance_495]
-		[STANDARD_CLASS_FORM_WIDGET]
 		[KB_713803_Instance_303]
+		[STANDARD_CLASS_FORM_WIDGET]
 		[KB_313796_Instance_852]
 		[Instance_1005]
-		[KB_301165_Instance_1013]
 		[Instance_581]
+		[KB_301165_Instance_1013]
 		[KB_938545_Instance_412]
 		[KB_764103_Instance_545]
 		[KB_713803_Instance_390]
@@ -7251,12 +7100,12 @@
 		"owl:Class"
 		"rdfs:Container"
 		"owl:Ontology"
-		":TO"
-		"xsd:gMonthDay"
 		"owl:DataRange"
+		"xsd:gMonthDay"
+		":TO"
 		"xsd:NMTOKEN"
-		"xsd:QName"
 		"xsd:unsignedInt"
+		"xsd:QName"
 		"owl:FunctionalProperty"
 		"xsd:long"
 		"owl:onProperty"
@@ -7284,41 +7133,41 @@
 		"rdf:rest"
 		"xsd:decimal"
 		"rdf:subject"
-		"xsd:Name"
-		"rdf:value"
-		"owl:sameAs"
 		"owl:SymmetricProperty"
+		"owl:sameAs"
+		"rdf:value"
+		"xsd:Name"
 		"xsd:byte"
-		"owl:differentFrom"
 		"owl:AllDifferent"
-		"rdf:Property"
+		"owl:differentFrom"
 		"owl:Nothing"
-		"owl:cardinality"
+		"rdf:Property"
 		"owl:InverseFunctionalProperty"
+		"owl:cardinality"
 		"xsd:nonNegativeInteger"
 		"rdf:Statement"
-		":FROM"
 		"rdfs:Literal"
-		"owl:disjointWith"
+		":FROM"
 		"xsd:anySimpleType"
+		"owl:disjointWith"
 		"owl:minCardinality"
 		"xsd:ID"
 		"xsd:gDay"
 		"xsd:gYearMonth"
-		"xsd:NCName"
 		"owl:distinctMembers"
+		"xsd:NCName"
 		"xsd:nonPositiveInteger"
 		"rdfs:Datatype"
-		":DIRECTED-BINARY-RELATION"
-		"xsd:token"
 		"owl:TransitiveProperty"
-		"xsd:IDREF"
-		"xsd:ENTITY"
+		"xsd:token"
+		":DIRECTED-BINARY-RELATION"
 		"xsd:normalizedString"
+		"xsd:ENTITY"
+		"xsd:IDREF"
 		"xsd:gMonth"
-		"rdf:type"
-		"owl:oneOf"
 		"owl:maxCardinality"
+		"owl:oneOf"
+		"rdf:type"
 		"rdf:object")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
