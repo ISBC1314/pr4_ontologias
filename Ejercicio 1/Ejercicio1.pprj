@@ -1,4 +1,4 @@
-; Wed Jun 11 18:19:10 CEST 2014
+; Wed Jun 11 18:34:53 CEST 2014
 ; 
 ;+ (version "3.3.1")
 ;+ (build "Build 430")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ejercicio1_ProjectKB_Instance_4492]
-		[Ejercicio1_ProjectKB_Instance_4493]
-		[Ejercicio1_ProjectKB_Instance_4494]
-		[Ejercicio1_ProjectKB_Instance_4495]
-		[Ejercicio1_ProjectKB_Instance_4496]))
+		[Ejercicio1_ProjectKB_Instance_107]
+		[Ejercicio1_ProjectKB_Instance_108]
+		[Ejercicio1_ProjectKB_Instance_109]
+		[Ejercicio1_ProjectKB_Instance_110]
+		[Ejercicio1_ProjectKB_Instance_111]))
 
 ([CLSES_TAB] of  Widget
 
@@ -37,8 +37,33 @@
 ([Ejercicio1_ProjectKB_Instance_10542] of  Property_List
 )
 
+([Ejercicio1_ProjectKB_Instance_107] of  String
+
+	(name "owl:Class")
+	(string_value "%3ANAME"))
+
+([Ejercicio1_ProjectKB_Instance_108] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ejercicio1_ProjectKB_Instance_109] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
 ([Ejercicio1_ProjectKB_Instance_11] of  Property_List
 )
+
+([Ejercicio1_ProjectKB_Instance_110] of  String
+
+	(name "owl:Thing")
+	(string_value "%3ANAME"))
+
+([Ejercicio1_ProjectKB_Instance_111] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
 
 ([Ejercicio1_ProjectKB_Instance_12] of  Widget
 
@@ -90,31 +115,6 @@
 	(is_hidden TRUE)
 	(property_list [Ejercicio1_ProjectKB_Instance_5])
 	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
-
-([Ejercicio1_ProjectKB_Instance_4492] of  String
-
-	(name "owl:Class")
-	(string_value "%3ANAME"))
-
-([Ejercicio1_ProjectKB_Instance_4493] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ejercicio1_ProjectKB_Instance_4494] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ejercicio1_ProjectKB_Instance_4495] of  String
-
-	(name "owl:Thing")
-	(string_value "%3ANAME"))
-
-([Ejercicio1_ProjectKB_Instance_4496] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
 
 ([Ejercicio1_ProjectKB_Instance_5] of  Property_List
 )
@@ -7052,12 +7052,12 @@
 		[KB_713803_Instance_693]
 		[KB_313796_Instance_943]
 		[KB_938545_Instance_495]
-		[KB_713803_Instance_303]
 		[STANDARD_CLASS_FORM_WIDGET]
+		[KB_713803_Instance_303]
 		[KB_313796_Instance_852]
 		[Instance_1005]
-		[Instance_581]
 		[KB_301165_Instance_1013]
+		[Instance_581]
 		[KB_938545_Instance_412]
 		[KB_764103_Instance_545]
 		[KB_713803_Instance_390]
@@ -7100,12 +7100,12 @@
 		"owl:Class"
 		"rdfs:Container"
 		"owl:Ontology"
-		"owl:DataRange"
-		"xsd:gMonthDay"
 		":TO"
+		"xsd:gMonthDay"
+		"owl:DataRange"
 		"xsd:NMTOKEN"
-		"xsd:unsignedInt"
 		"xsd:QName"
+		"xsd:unsignedInt"
 		"owl:FunctionalProperty"
 		"xsd:long"
 		"owl:onProperty"
@@ -7133,41 +7133,41 @@
 		"rdf:rest"
 		"xsd:decimal"
 		"rdf:subject"
-		"owl:SymmetricProperty"
-		"owl:sameAs"
-		"rdf:value"
 		"xsd:Name"
+		"rdf:value"
+		"owl:sameAs"
+		"owl:SymmetricProperty"
 		"xsd:byte"
-		"owl:AllDifferent"
 		"owl:differentFrom"
-		"owl:Nothing"
+		"owl:AllDifferent"
 		"rdf:Property"
-		"owl:InverseFunctionalProperty"
+		"owl:Nothing"
 		"owl:cardinality"
+		"owl:InverseFunctionalProperty"
 		"xsd:nonNegativeInteger"
 		"rdf:Statement"
-		"rdfs:Literal"
 		":FROM"
-		"xsd:anySimpleType"
+		"rdfs:Literal"
 		"owl:disjointWith"
+		"xsd:anySimpleType"
 		"owl:minCardinality"
 		"xsd:ID"
 		"xsd:gDay"
 		"xsd:gYearMonth"
-		"owl:distinctMembers"
 		"xsd:NCName"
+		"owl:distinctMembers"
 		"xsd:nonPositiveInteger"
 		"rdfs:Datatype"
-		"owl:TransitiveProperty"
-		"xsd:token"
 		":DIRECTED-BINARY-RELATION"
-		"xsd:normalizedString"
-		"xsd:ENTITY"
+		"xsd:token"
+		"owl:TransitiveProperty"
 		"xsd:IDREF"
+		"xsd:ENTITY"
+		"xsd:normalizedString"
 		"xsd:gMonth"
-		"owl:maxCardinality"
-		"owl:oneOf"
 		"rdf:type"
+		"owl:oneOf"
+		"owl:maxCardinality"
 		"rdf:object")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
