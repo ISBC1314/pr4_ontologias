@@ -9,22 +9,22 @@
   <owl:Ontology rdf:about=""/>
   <owl:Class rdf:ID="Vaca">
     <owl:disjointWith>
-      <owl:Class rdf:ID="Tigre"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:ID="Pato"/>
+      <owl:Class rdf:ID="Perro"/>
     </owl:disjointWith>
     <owl:disjointWith>
       <owl:Class rdf:ID="Gato"/>
     </owl:disjointWith>
     <owl:disjointWith>
-      <owl:Class rdf:ID="Perro"/>
+      <owl:Class rdf:ID="Pato"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Tigre"/>
     </owl:disjointWith>
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="Animal"/>
+      <owl:Class rdf:ID="Vegetariano"/>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="Vegetariano"/>
+      <owl:Class rdf:ID="Animal"/>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="Amante_animales">
@@ -33,11 +33,11 @@
     </rdfs:subClassOf>
     <owl:equivalentClass>
       <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >3</owl:minCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:ID="Tiene_mascota"/>
         </owl:onProperty>
-        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
-        >3</owl:minCardinality>
       </owl:Restriction>
     </owl:equivalentClass>
   </owl:Class>
@@ -60,39 +60,54 @@
       <owl:Class rdf:about="#Dueño"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="#Gato">
+  <owl:Class rdf:ID="Viejecita">
     <rdfs:subClassOf>
-      <owl:Class rdf:about="#Animal"/>
+      <owl:Class rdf:ID="Mujer"/>
     </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#Tiene_mascota"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#Gato"/>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Gato">
     <rdfs:subClassOf>
       <owl:Class rdf:ID="Mascota"/>
     </rdfs:subClassOf>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Tigre"/>
-    </owl:disjointWith>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Pato"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="#Vaca"/>
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Perro"/>
-    </owl:disjointWith>
-  </owl:Class>
-  <owl:Class rdf:about="#Perro">
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Animal"/>
     </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Mascota"/>
-    </rdfs:subClassOf>
     <owl:disjointWith>
-      <owl:Class rdf:about="#Tigre"/>
+      <owl:Class rdf:about="#Perro"/>
     </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Vaca"/>
     <owl:disjointWith>
       <owl:Class rdf:about="#Pato"/>
     </owl:disjointWith>
-    <owl:disjointWith rdf:resource="#Vaca"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tigre"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Perro">
     <owl:disjointWith rdf:resource="#Gato"/>
+    <owl:disjointWith rdf:resource="#Vaca"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pato"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Tigre"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mascota"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Animal"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="Persona">
     <owl:disjointWith>
@@ -102,10 +117,18 @@
       <owl:Class rdf:ID="SerVivo"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="Gatero">
+    <rdfs:subClassOf rdf:resource="#Persona"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="Gustan"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Gato"/>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
   <owl:Class rdf:ID="Propietario_de_perro">
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Dueño"/>
-    </rdfs:subClassOf>
     <owl:equivalentClass>
       <owl:Restriction>
         <owl:onProperty>
@@ -114,17 +137,17 @@
         <owl:someValuesFrom rdf:resource="#Perro"/>
       </owl:Restriction>
     </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Gatero">
-    <rdfs:subClassOf rdf:resource="#Persona"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Sesos_oveja">
-    <rdfs:subClassOf rdf:resource="#PartesDeAnimal"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Dueño"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="Vegetales">
     <rdfs:subClassOf rdf:resource="#Comida"/>
   </owl:Class>
   <owl:Class rdf:about="#Vegetariano">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Animal"/>
+    </rdfs:subClassOf>
     <owl:equivalentClass>
       <owl:Restriction>
         <owl:allValuesFrom rdf:resource="#Vegetales"/>
@@ -133,38 +156,45 @@
         </owl:onProperty>
       </owl:Restriction>
     </owl:equivalentClass>
-    <rdfs:subClassOf>
-      <owl:Class rdf:about="#Animal"/>
-    </rdfs:subClassOf>
     <owl:disjointWith>
       <owl:Class rdf:about="#Mascota"/>
     </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:ID="Perrero">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Perro"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#Gustan"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
     <rdfs:subClassOf rdf:resource="#Persona"/>
   </owl:Class>
   <owl:Class rdf:about="#Tigre">
-    <owl:disjointWith>
-      <owl:Class rdf:about="#Pato"/>
-    </owl:disjointWith>
-    <owl:disjointWith rdf:resource="#Vaca"/>
-    <owl:disjointWith rdf:resource="#Gato"/>
-    <owl:disjointWith rdf:resource="#Perro"/>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Animal"/>
     </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Perro"/>
+    <owl:disjointWith rdf:resource="#Gato"/>
+    <owl:disjointWith rdf:resource="#Vaca"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pato"/>
+    </owl:disjointWith>
   </owl:Class>
   <owl:Class rdf:about="#SerVivo">
     <owl:equivalentClass>
       <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="#Comida"/>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="#Comen"/>
         </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Comida"/>
       </owl:Restriction>
     </owl:equivalentClass>
   </owl:Class>
   <owl:Class rdf:about="#Mascota">
+    <owl:disjointWith rdf:resource="#Vegetariano"/>
+    <owl:disjointWith rdf:resource="#Persona"/>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Animal"/>
     </rdfs:subClassOf>
@@ -176,8 +206,6 @@
         <owl:someValuesFrom rdf:resource="#Persona"/>
       </owl:Restriction>
     </owl:equivalentClass>
-    <owl:disjointWith rdf:resource="#Persona"/>
-    <owl:disjointWith rdf:resource="#Vegetariano"/>
   </owl:Class>
   <owl:Class rdf:about="#Dueño">
     <owl:equivalentClass>
@@ -192,24 +220,27 @@
     <rdfs:subClassOf rdf:resource="#Persona"/>
   </owl:Class>
   <owl:Class rdf:about="#Pato">
+    <rdfs:subClassOf rdf:resource="#Vegetariano"/>
+    <rdfs:subClassOf rdf:resource="#Mascota"/>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#Animal"/>
     </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#Mascota"/>
-    <rdfs:subClassOf rdf:resource="#Vegetariano"/>
-    <owl:disjointWith rdf:resource="#Tigre"/>
-    <owl:disjointWith rdf:resource="#Vaca"/>
-    <owl:disjointWith rdf:resource="#Gato"/>
     <owl:disjointWith rdf:resource="#Perro"/>
+    <owl:disjointWith rdf:resource="#Gato"/>
+    <owl:disjointWith rdf:resource="#Vaca"/>
+    <owl:disjointWith rdf:resource="#Tigre"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Mujer">
+    <rdfs:subClassOf rdf:resource="#Persona"/>
   </owl:Class>
   <owl:Class rdf:about="#Animal">
     <rdfs:subClassOf rdf:resource="#SerVivo"/>
   </owl:Class>
   <owl:ObjectProperty rdf:about="#Comen">
-    <rdfs:range rdf:resource="#Comida"/>
     <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Comida"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="Gustan">
+  <owl:ObjectProperty rdf:about="#Gustan">
     <rdfs:range rdf:resource="#Animal"/>
     <rdfs:domain rdf:resource="#Persona"/>
   </owl:ObjectProperty>
@@ -225,26 +256,28 @@
     <rdfs:range rdf:resource="#Persona"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#Tiene_mascota">
-    <rdfs:subPropertyOf rdf:resource="#Gustan"/>
     <rdfs:range rdf:resource="#Mascota"/>
-    <owl:inverseOf rdf:resource="#Mascota_de"/>
     <rdfs:domain rdf:resource="#Persona"/>
+    <owl:inverseOf rdf:resource="#Mascota_de"/>
+    <rdfs:subPropertyOf rdf:resource="#Gustan"/>
   </owl:ObjectProperty>
   <Gato rdf:ID="Luisi">
     <Mascota_de>
       <Persona rdf:ID="Marisa">
-        <Tiene_mascota rdf:resource="#Luisi"/>
         <Tiene_mascota>
           <Gato rdf:ID="Sisi">
             <Mascota_de rdf:resource="#Marisa"/>
           </Gato>
         </Tiene_mascota>
+        <Tiene_mascota rdf:resource="#Luisi"/>
       </Persona>
     </Mascota_de>
   </Gato>
   <Persona rdf:ID="Luis">
     <Tiene_mascota>
-      <Tigre rdf:ID="Titi"/>
+      <Perro rdf:ID="Cooper">
+        <Mascota_de rdf:resource="#Luis"/>
+      </Perro>
     </Tiene_mascota>
     <Tiene_mascota>
       <Pato rdf:ID="Fluffy">
@@ -252,9 +285,7 @@
       </Pato>
     </Tiene_mascota>
     <Tiene_mascota>
-      <Perro rdf:ID="Cooper">
-        <Mascota_de rdf:resource="#Luis"/>
-      </Perro>
+      <Tigre rdf:ID="Titi"/>
     </Tiene_mascota>
   </Persona>
   <Persona rdf:ID="Alfredo"/>
@@ -263,30 +294,30 @@
   <Pato rdf:ID="Dewey">
     <Mascota_de>
       <Persona rdf:ID="Carlos">
-        <Tiene_mascota rdf:resource="#Dewey"/>
+        <Tiene_mascota>
+          <Perro rdf:ID="Coco">
+            <Mascota_de rdf:resource="#Carlos"/>
+          </Perro>
+        </Tiene_mascota>
+        <Tiene_mascota>
+          <Perro rdf:ID="Flipi">
+            <Mascota_de rdf:resource="#Carlos"/>
+          </Perro>
+        </Tiene_mascota>
         <Tiene_mascota>
           <Pato rdf:ID="Huey">
+            <Mascota_de rdf:resource="#Carlos"/>
             <Mascota_de>
               <Persona rdf:ID="Amalia">
-                <Tiene_mascota>
-                  <Perro rdf:ID="Coco">
-                    <Mascota_de rdf:resource="#Carlos"/>
-                  </Perro>
-                </Tiene_mascota>
-                <Tiene_mascota>
-                  <Perro rdf:ID="Flipi">
-                    <Mascota_de rdf:resource="#Carlos"/>
-                  </Perro>
-                </Tiene_mascota>
-                <Tiene_mascota rdf:resource="#Dewey"/>
                 <Tiene_mascota rdf:resource="#Huey"/>
+                <Tiene_mascota rdf:resource="#Dewey"/>
+                <Tiene_mascota rdf:resource="#Flipi"/>
+                <Tiene_mascota rdf:resource="#Coco"/>
               </Persona>
             </Mascota_de>
-            <Mascota_de rdf:resource="#Carlos"/>
           </Pato>
         </Tiene_mascota>
-        <Tiene_mascota rdf:resource="#Flipi"/>
-        <Tiene_mascota rdf:resource="#Coco"/>
+        <Tiene_mascota rdf:resource="#Dewey"/>
       </Persona>
     </Mascota_de>
   </Pato>
