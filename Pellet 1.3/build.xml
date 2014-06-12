@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<project name="Pellet" default="dist" basedir=".">
+	<description>
+    Pellet is a description logic reasoner built for the Web Ontology
+    Language (OWL).
+  </description>
+
+	<!-- Read user properties -->
+	<property file="build.properties"/>
+	<property file="${user.home}/build.properties"/>
+
+	<!-- Enviroment -->
+	<property environment="env"/>
+
+	<!-- Global Properties -->
+	<property name="src" location="src" />
+	<property name="test.dir" location="test"/>
+	<property name="examples.dir" location="examples"/>
+	<property name="javadoc.dir" location="doc/javadoc"/>
+	<property name="build" location="build"/>
+	<property name="build.class" location="${build}/class" />
+	<property name="build.lib" location="${build}/lib" />
+	<property name="dist" location="dist" />
+	<property name="project.name" value="pellet" />
+	<property name="project.version.number" value="1.3" />
+	<property name="mainclass" value="org.mindswap.pellet.Pellet"/>
+	<property name="project.version.file" value="org/mindswap/pellet/version.properties"/>
+	<property name="project.version.template" value="${src}/${project.version.file}.in"/>
+
+
+	<path id="project.class.path">
+		<pathelement location="lib/" />
+		<pathelement location="${build.class}" />
+		<pathelement location="${examples.dir}"/>
+		<pathelement location="${test.dir}"/>
+		<fileset dir="lib">
+			<include name="**/*.jar"/>
+			<exclude name="**/${project.name}*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init">
+		<pathconvert targetos="unix" property="classpath" refid="project.class.path" />
+		<echo>CLASSPATH=${classpath}</echo>
+		<!-- Create the time stamp -->
+		<tstamp/>
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build.class}"/>
+	</target>
+
+	<target name="compile" depends="init"
+      description="Compile source files." >
+		<javac source="1.4" target="1.4" srcdir="${src}" destdir="${build.class}" debug="yes" deprecation="yes">
+			<classpath refid="project.class.path"/>
+            <exclude name="org/mindswap/pellet/servlet/Spas2.java"/>
+		</javac>
+		<javac source="1.4" target="1.4" srcdir="${test.dir}" destdir="${build.class}" debug="yes" deprecation="yes">
+			<classpath refid="project.class.path"/>
+		</javac>
+		<javac source="1.4" target="1.4" srcdir="${examples.dir}" destdir="${build.class}" debug="yes" deprecation="yes">
+			<classpath refid="project.class.path"/>
+		</javac>
+	</target>
+
+	<target name="build" depends="compile, copy-version-info"
+          description="Compile sources and copy data files into build directory.">
+		<copy todir="${build.class}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java" />
+			</fileset>
+			<fileset dir=".">
+				<include name="images/*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${build.lib}" flatten="true">
+			<fileset dir="lib" />
+		</copy>
+	</target>
+
+	<target name="copy-version-info" depends="label-date">
+		<copy file="${project.version.template}" tofile="${build.class}/${project.version.file}" overwrite="true" />
+		<echo message="${project.version.label}" />
+		<replace file="${build.class}/${project.version.file}">
+			<replacefilter token="$$$$VERSION" value="${project.version.label}" />
+			<replacefilter token="$$$$DATE" value="${TODAY}" />
+		</replace>
+	</target>
+	
+    <target name="label-date" depends="init">
+        <property name="project.version.label"
+                  value="${DSTAMP}"/>
+        <property name="project.label" 
+                  value="${project.name}-${DSTAMP}"/>
+    </target>
+
+    <target name="label-nightly" depends="init">
+        <property name="project.version.label"
+                  value="nightly-build-${DSTAMP}"/>
+        <property name="project.label" 
+                  value="${project.name}-nightly"/>
+    </target>
+    
+    <target name="label-release" depends="init">
+        <property name="project.version.label"
+                  value="${project.version.number}"/>
+        <property name="project.label" 
+                  value="${project.name}-${project.version.number}"/>
+    </target>
+
+	<target name="distfiles">
+		<!-- Copy in lib files -->
+		<mkdir dir="${dist}/lib" />
+		<copy todir="${dist}/lib">
+			<fileset dir="lib">
+				<include name="**/*.jar" />
+				<exclude name="**/${project.name}*.jar"/>
+			</fileset>
+		</copy>
+
+		<!-- Copy in image files" -->
+		<!--<mkdir dir="${dist}/images"/>
+    <copy todir="${dist}/images">
+      <fileset dir="images">
+        <include name="**/*"/>
+      </fileset>
+    </copy>
+    -->
+
+		<!-- Copy base files in -->
+		<copy todir="${dist}">
+			<fileset dir="" includes="README.txt LICENSE.txt CHANGES.txt build.xml">
+				<include name="pellet.properties"/>
+				<include name="pellet*.bat"/>
+				<include name="pellet*.sh"/>
+				<include name="doc/**"/>
+				<include name="examples/**"/>
+				<include name="src/**"/>
+				<include name="test/**"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="dist" depends="build,distfiles"
+          description="Generate a distribution" >
+		<!-- Generate relative classpath for jar file -->
+		<property name="lib" location="${basedir}/lib/"/>
+		<pathconvert dirsep="/" pathsep=" " property="Class-Path">
+			<map from="${lib}/" to=""/>
+			<map from="${lib}\" to=""/>
+			<!--" (dumb vim problem with quotes)-->
+			<path>
+				<fileset dir="lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</path>
+		</pathconvert>
+
+		<!-- Make Jar file. -->
+		<jar jarfile="${dist}/lib/${project.name}.jar"
+       basedir="${build.class}">
+			<manifest>
+				<attribute name="Main-Class" value="${mainclass}"/>
+				<attribute name="Class-Path" value="${Class-Path}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="war" depends="build,distfiles">
+		<war destfile="${dist}/${project.name}.war" webxml="web/WEB-INF/web.xml">
+			<classes dir="${build.class}" />
+			<lib dir="${build.lib}">
+				<exclude name="servlet.jar"/>
+			</lib>
+			<webinf dir="web/WEB-INF" excludes="web.xml"/>
+			<zipfileset dir="web" excludes="WEB-INF/**"/>
+		</war>
+	</target>
+
+	<target name="zipfile" depends="label-date,dist,javadoc"
+          description="Build a zipfile containing source and binaries.">
+		<condition property="project.dirname"
+           value="${project.name}-${DSTAMP}">
+			<not>
+				<isset property="project.dirname"/>
+			</not>
+		</condition>
+		<!-- Copy the javadocs -->
+		<copy todir="${dist}">
+			<fileset dir="">
+				<include name="doc/**"/>
+			</fileset>
+		</copy>
+		<zip destfile="${dist}/${project.dirname}.zip">
+			<zipfileset dir="dist" prefix="${project.dirname}"
+            excludes="${project.name}*.zip"/>
+		</zip>
+	</target>
+
+	<target name="javadoc" depends="build">
+		<javadoc destdir="${javadoc.dir}" access="public" use="true" notree="false" nonavbar="false" 
+    noindex="false" splitindex="true" author="true" version="true" nodeprecatedlist="false" 
+    nodeprecated="false" 
+    sourcepath="${src}" 
+    packagenames="org.mindswap.pellet.*"  
+    doctitle="${project.name}-${project.version.label}"
+    bottom="Copyright &#169; 2004 Evren Sirin. All Rights Reserved.">
+			<classpath refid="project.class.path"/>
+		</javadoc>
+	</target>
+
+	<target name="release" depends="label-release">
+		<property name="project.dirname" 
+              value="${project.name}-${project.version.label}" />
+		<antcall target="zipfile"/>
+	</target>
+
+	<target name="nightly-release" depends="label-nightly">
+		<property name="project.dirname"
+              value="${project.name}-nightly" />
+		<antcall target="zipfile"/>
+	</target>
+
+	<target name="clean" description="Clean up build files">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+		<delete dir="${javadoc.dir}" />
+	</target>
+</project>

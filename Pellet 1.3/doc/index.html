@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="Microsoft FrontPage 5.0"
+      name="generator" />
+<title>Pellet README</title>
+</head>
+<body>
+<h1>Pellet OWL Reasoner</h1>
+
+<h2>Contents</h2>
+
+<ol>
+  <li><a href="#intro">Introduction</a></li>
+  <li><a href="#install">Installation</a></li>
+  <li><a href="#running">Running Pellet (Command Line Version)</a></li>
+  <li><a href="#using">Using Pellet in Applications</a>
+  	<ul>
+	  <li><a href="#javadoc">API javadocs</a></li>
+	</ul>
+  </li>	  
+  <li><a href="#building">Building Pellet</a></li>  
+  <li><a href="#mail">Mailing list</a></li> 
+</ol>
+
+<a name="intro"></a><h3>Introduction</h3>
+
+<p>Pellet is an open-source Java based OWL DL reasoner. It can be used in 
+conjunction with either <a href="http://jena.sourceforge.net">Jena</a> or
+<a href="http://sourceforge.net/projects/owlapi">OWL API</a> libraries. Pellet 
+provides functionalities to validate ontology species, check consistency of 
+ontologies, classify the taxonomy, check entailments and answer a subset of RDQL 
+queries (known as ABox queries in DL terminology). </p>
+
+<a name="install"></a><h3>Installation</h3>
+<p>Pellet requires a JVM compatible with Sun's Java version 1.4 or above.
+You can download Sun's JVM or SDK at <a href="http://java.sun.com">
+http://java.sun.com</a>. If you have Java installed on your machine just unzip 
+the Pellet distribution file to start using it. </p>
+
+<a name="running"></a><h3>Running Pellet (Command Line Version)</h3>
+<p>Pellet comes with a simple command line interface to demonstrate some of its 
+capabilities. This program provides options to find the ontology level (Lite, 
+DL, FULL), check consistency of an ontology, find unsatisfiable concepts, 
+display class hierarchy (with instances if desired), to answer a SPARQL query.</p>
+<p>To run the command line version simply execute the following command</p>
+<pre>java -jar lib/pellet.jar</pre>
+<p>Running this command will print the options available.<time><br>
+</time></p>
+
+<a name="using"></a><h3>Using Pellet in Applications</h3>
+
+<p>You can access Pellet from Java applications using one of two different APIs 
+designed to 
+support <a href="http://jena.sourceforge.net">Jena</a> and
+<a href="http://sourceforge.net/projects/owlapi">OWL API</a> libraries. The functionality 
+in both packages is almost equivalent. See the javadocs&nbsp; (<a href="doc/javadoc/index.html">doc/javadoc</a>) 
+for the details of interfaces and check out the examples directory (<a href="src/examples">src/examples</a>) 
+for sample code. You can find the answers to some Frequently Asked Questions in <a href="http://www.mindswap.org/2003/pellet/faq">Pellet FAQ</a>.
+
+<p>If you are interested in a GUI, you can use
+<a href="http://www.mindswap.org/2004/SWOOP/">SWOOP</a> which uses Pellet for 
+reasoning.</p>
+
+<a name="building"></a><h3>Building Pellet</h3>
+<h4>Starting from a Distribution</h4>
+<p>If you are starting from a distribution, Pellet comes pre-built, with
+all the required libraries are included in the zip file. To use the Pellet 
+build system, you need Apache Ant, version 1.5 or above. You can download
+a copy of Ant at
+<a href="http://ant.apache.org/">http://ant.apache.org/</a>.</p>
+<h4>Starting from Subversion</h4>
+<p>All the required library files are included in the lib directory.</p>
+<h4>Compilation</h4>
+<p>Running 'ant' in the trunk directory should be enough.  The resulting jar 
+file is placed in dist/lib/pellet.jar.  Running 'ant zipfile' 
+will build a source and binary distribution in the file 
+dist/pellet-{date}.zip</p>
+
+<h4>Building your own distribution</h4>
+<p>The ant target 'zipfile' will build the file dist/pellet-{date}.zip.
+The ant target 'release' will build the file dist/pellet-{version}.zip.
+You can change the version string by editing the build.xml file.  The 
+distribution file will include the source code, the Pellet jar file,
+and all supporting jar files found in the lib/ directory.</p>
+
+<a name="mail"></a><h3>Mailing list</h3>
+
+There is a mailing list for questions and feedback: pellet-users@lists.mindswap.org.
+You can subscribe to the list and see the archives here: 
+<a href="http://lists.mindswap.org/mailman/listinfo/pellet-users">http://lists.mindswap.org/mailman/listinfo/pellet-users</a>.
+
+</body>
+</html>
