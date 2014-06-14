@@ -12,7 +12,7 @@ import es.ucm.fdi.gaia.ontobridge.test.gui.PnlSelectInstance;
 
 public class Controlador {
 
-	private static final String URL_ONTOLOGIA = "http://www.owl-ontologies.com/Ontology1402150125.owl";
+	private static final String URL_ONTOLOGIA = "http://www.owl-ontologies.com/Ontology1402519238.owl";
 	
 	private OntoBridge ob;
 	
@@ -58,6 +58,23 @@ public class Controlador {
 		//ob.createOntProperty("Foto"+(numFotoActual+1),relacion,item);
 		//ob.save("Ejercicio2.owl");
 		
+	}
+	
+	public List<String> dameFotos(){
+		List<String> fotos = new ArrayList<String>();
+		Iterator<String> iterador = ob.listInstances("Foto");
+		
+		while (iterador.hasNext()){
+			String nombre = iterador.next();
+			System.out.println(nombre);
+			fotos.add(parser_nombre(nombre));	
+		}
+		
+		return fotos;
+	}
+	
+	private String parser_nombre(String string) {
+		return string.substring(string.indexOf('#')+1);
 	}
 	
 }

@@ -1,4 +1,4 @@
-; Sat Jun 14 02:15:40 CEST 2014
+; Sat Jun 14 02:20:34 CEST 2014
 ; 
 ;+ (version "3.3.1")
 ;+ (build "Build 430")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ejercicio2_ProjectKB_Instance_279]
-		[Ejercicio2_ProjectKB_Instance_280]
-		[Ejercicio2_ProjectKB_Instance_281]
-		[Ejercicio2_ProjectKB_Instance_282]
-		[Ejercicio2_ProjectKB_Instance_283]))
+		[Ejercicio2_ProjectKB_Instance_289]
+		[Ejercicio2_ProjectKB_Instance_290]
+		[Ejercicio2_ProjectKB_Instance_291]
+		[Ejercicio2_ProjectKB_Instance_292]
+		[Ejercicio2_ProjectKB_Instance_293]))
 
 ([CLSES_TAB] of  Widget
 
@@ -109,32 +109,12 @@
 	(property_list [Ejercicio2_ProjectKB_Instance_28])
 	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
 
-([Ejercicio2_ProjectKB_Instance_279] of  String
-
-	(name "owl:Thing")
-	(string_value "%3ANAME"))
-
 ([Ejercicio2_ProjectKB_Instance_28] of  Property_List
 )
 
-([Ejercicio2_ProjectKB_Instance_280] of  String
+([Ejercicio2_ProjectKB_Instance_289] of  String
 
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ejercicio2_ProjectKB_Instance_281] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ejercicio2_ProjectKB_Instance_282] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Ejercicio2_ProjectKB_Instance_283] of  String
-
-	(name "owl:Class")
+	(name "owl:Thing")
 	(string_value "%3ANAME"))
 
 ([Ejercicio2_ProjectKB_Instance_29] of  Widget
@@ -142,6 +122,26 @@
 	(is_hidden TRUE)
 	(property_list [Ejercicio2_ProjectKB_Instance_30])
 	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+
+([Ejercicio2_ProjectKB_Instance_290] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Ejercicio2_ProjectKB_Instance_291] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ejercicio2_ProjectKB_Instance_292] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Ejercicio2_ProjectKB_Instance_293] of  String
+
+	(name "owl:Class")
+	(string_value "%3ANAME"))
 
 ([Ejercicio2_ProjectKB_Instance_3] of  Widget
 

@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -23,10 +24,12 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import net.miginfocom.swing.MigLayout;
+import controlador.Controlador;
 
 public class VistaPrincipal extends JFrame implements ActionListener{
 
-
+	private Controlador controlador;
+	
 	private static final int IMAGE_WIDTH = 565;
 	private static final int IMAGE_HEIGHT = 340;
 	
@@ -61,10 +64,13 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	
 	private JComboBox<String> JComboBox_relacion;
 	private JComboBox<String> JComboBox_item;
+	private JComboBox<String> JComboBox_fotos;
 	
-	public VistaPrincipal(JPanel panel) {
+	public VistaPrincipal(JPanel panel,Controlador controlador) {
+		this.controlador = controlador;
 		this.setBounds(50,50,900,500);
 		initialize(panel);
+		cargarComboBoxFotos();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -103,9 +109,9 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_fotoImg = new JPanel();
 		JPanel_foto.add(JPanel_fotoImg,"cell 0 1");
 		
-		JButton_cargarFoto = new JButton("Cargar foto");
-		JPanel_foto.add(JButton_cargarFoto,"cell 0 2");
-		JButton_cargarFoto.addActionListener(this);
+		JComboBox_fotos = new JComboBox<String>();
+		JPanel_foto.add(JComboBox_fotos,"cell 0 2");
+		JComboBox_fotos.addActionListener(this);
 		
 		JPanel_resultado1 = new JPanel();
 		JPanel_infoFoto.add(JPanel_resultado1,"cell 1 0");
@@ -170,26 +176,23 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_resultado2.add(JScrollPane_resultado2);
 	}
 	
+	public void cargarComboBoxFotos(){
+		List<String> items;
+		items = controlador.dameFotos();
+		for (int i=0;i<items.size();i++)
+			JComboBox_fotos.addItem(items.get(i));
+	}
+	
 	public void mostrarFoto(String url){
-			ImageIcon icono = new ImageIcon(url);
+			ImageIcon icono = new ImageIcon("./fotos/"+url);
 			icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
 			JLabel_foto.setIcon(icono);
 	}
-	/*
-	public static void main(String[] args){
-				try {
-					
-					VistaPrincipal window = new VistaPrincipal();
-					window.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-	}
-	*/
+	
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		Object fuente = arg0.getSource();
+		if (fuente.equals(JComboBox_fotos))
+			mostrarFoto((String)JComboBox_fotos.getSelectedItem());
 	}
 
 }

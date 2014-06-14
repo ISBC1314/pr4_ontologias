@@ -920,7 +920,6 @@
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >./fotos/foto25.jpg</urlFoto>
   </Foto>
-  <TituloReal rdf:ID="TituloReal_54"/>
   <Foto rdf:ID="Foto24">
     <aparece_en rdf:resource="#Elena_Borbon"/>
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
@@ -941,7 +940,6 @@
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >./fotos/foto10.png</urlFoto>
   </Foto>
-  <Lugar rdf:ID="Lugar_49"/>
   <Foto rdf:ID="Foto23">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >./fotos/foto23.jpg</urlFoto>

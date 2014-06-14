@@ -9,7 +9,7 @@ public class Main {
 
 		//Crear el objeto que implementa la aplicacion CBR
 		Controlador controlador = new Controlador();
-		VistaPrincipal vistaPrincipal = new VistaPrincipal(controlador.damePanelOntologia());
+		VistaPrincipal vistaPrincipal = new VistaPrincipal(controlador.damePanelOntologia(),controlador);
 
 	}
 
