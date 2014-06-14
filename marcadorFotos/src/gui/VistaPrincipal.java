@@ -40,7 +40,6 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JButton JButton_fotosDelRey;
 	private JButton JButton_marcarFoto;
 	private JButton JButton_eliminarMarca;
-	private JButton JButton_cargarFoto;
 	
 	private JPanel JPanel_marcar;
 	private JPanel JPanel_buscar;
@@ -131,7 +130,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_marcar.add(JPanel_marcarFoto,"cell 0 1");
 		JPanel_marcarFoto.setLayout(new MigLayout("","[]30[]20[]20[]","[]"));
 		
-		JComboBox_relacion = new JComboBox<String>();
+		JComboBox_relacion = new JComboBox<String>(new String[] {"aparece en..." ,"está en..."});
+		//JComboBox_relacion.setModel(new DefaultComboBoxModel<String>(new String[] {"aparece en..." ,"está en..."}));
 		JPanel_marcarFoto.add(JComboBox_relacion,"cell 1 0");
 		
 		JComboBox_item = new JComboBox<String>();
@@ -177,9 +177,25 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	
 	public void cargarComboBoxFotos(){
 		List<String> items;
-		items = controlador.dameFotos();
+		items = controlador.getFotos();
 		for (int i=0;i<items.size();i++)
 			JComboBox_fotos.addItem(items.get(i));
+	}
+	
+	public void cargarComboBoxRelaciones(){
+		
+	}
+	
+	public void cargarComboBoxItems(){
+		List<String> items;
+		if (JComboBox_relacion.getSelectedIndex() == 0)
+			items = controlador.getPersonas();
+		else
+			items = controlador.getLugares();
+		
+		for (int i=0;i<items.size();i++)
+			JComboBox_fotos.addItem(items.get(i));
+
 	}
 	
 	public void mostrarFoto(String url){
@@ -193,6 +209,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		Object fuente = arg0.getSource();
 		if (fuente.equals(JComboBox_fotos))
 			mostrarFoto((String)JComboBox_fotos.getSelectedItem());
+		if (fuente.equals(JComboBox_relacion))
+			cargarComboBoxItems();
 	}
 
 }

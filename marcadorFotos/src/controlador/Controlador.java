@@ -60,17 +60,37 @@ public class Controlador {
 		
 	}
 	
-	public List<String> dameFotos(){
+	public List<String> getFotos(){
 		List<String> fotos = new ArrayList<String>();
-		Iterator<String> iterador = ob.listInstances("Foto");
-		
-		while (iterador.hasNext()){
-			String nombre = iterador.next();
+		Iterator<String> it = ob.listInstances("Foto");
+		while (it.hasNext()){
+			String nombre = it.next();
 			System.out.println(nombre);
 			fotos.add(parser_nombre(nombre));	
 		}
-		
 		return fotos;
+	}
+	
+	public List<String> getPersonas(){
+		List<String> personas = new ArrayList<String>();
+		Iterator<String> it = ob.listInstances("Persona");
+		while (it.hasNext()){
+			String nombre = it.next();
+			System.out.println(nombre);
+			personas.add(parser_nombre(nombre));	
+		}
+		return personas;
+	}
+	
+	public List<String> getLugares(){
+		List<String> lugares = new ArrayList<String>();
+		Iterator<String> it = ob.listInstances("Lugar");
+		while (it.hasNext()){
+			String nombre = it.next();
+			System.out.println(nombre);
+			lugares.add(parser_nombre(nombre));	
+		}
+		return lugares;
 	}
 	
 	private String parser_nombre(String string) {
