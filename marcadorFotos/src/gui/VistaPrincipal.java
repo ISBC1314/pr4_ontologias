@@ -39,7 +39,6 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private static final int IMAGE_HEIGHT = 250;
 	
 	private JButton JButton_fotosHermanos;
-	private JButton JButton_fotosRománticas;
 	private JButton JButton_fotosDeTrabajo;
 	private JButton JButton_fotosFamiliares;
 	private JButton JButton_fotosDelRey;
@@ -71,7 +70,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JComboBox<String> JComboBox_tipoMarca;
 	
 	private JList<String> JList_resultado1;
-	private JList<String> JList_resultado2;
+	private JList<ImageIcon> JList_resultado2;
 	
 	public VistaPrincipal(JPanel panel,Controlador controlador) {
 		this.controlador = controlador;
@@ -198,10 +197,11 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JScrollPane_resultado2 = new JScrollPane();
 		JPanel_resultado2.add(JScrollPane_resultado2);
 		
-		JList_resultado2 = new JList<String>();
+		JList_resultado2 = new JList<ImageIcon>();
 		JList_resultado2.setForeground(Color.BLACK);
 		JList_resultado2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		JList_resultado2.setModel(new DefaultListModel<String>());
+		JList_resultado2.setModel(new DefaultListModel<ImageIcon>());
+		JList_resultado2.setCellRenderer(new CellRendererFotos());
 		JScrollPane_resultado2.setViewportView(JList_resultado2);
 	}
 	
@@ -236,11 +236,12 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			}
 		}
 		else{
-			((DefaultListModel<String>)JList_resultado2.getModel()).removeAllElements();
+			((DefaultListModel<ImageIcon>)JList_resultado2.getModel()).removeAllElements();
 			List<String> items = controlador.getInfoBusqueda(tipo);
 			for (int i=0;i<items.size();i++){	
 				String nombre = items.get(i);
-				((DefaultListModel<String>)JList_resultado2.getModel()).addElement(nombre);
+				ImageIcon icono = new ImageIcon(controlador.getUrlFoto(nombre));
+				((DefaultListModel<ImageIcon>)JList_resultado2.getModel()).addElement(icono);
 			}
 		}
 		SwingUtilities.updateComponentTreeUI(this);

@@ -69,7 +69,6 @@ public class Controlador {
 		Iterator<String> it = ob.listInstances(propiedad);
 		while (it.hasNext()){
 			String nombre = it.next();
-			System.out.println(nombre);
 			lista.add(parser_nombre(nombre));	
 		}
 		return lista;
@@ -153,14 +152,11 @@ public class Controlador {
  	    	while (iteradorPersonas.hasNext()){
  	    		String persona = parser_nombre(iteradorPersonas.next());
  	    		personasEnLaFoto.add(persona);
- 	    		System.out.println("persona:    "+persona);
  	    		Iterator<String> iteradorHermanos = ob.listPropertyValue(persona,"es_hermanoa_de");
  	    		boolean hayHermano = false;
  	    		while (iteradorHermanos.hasNext() && !hayHermano){
  	    			String hermano = parser_nombre(iteradorHermanos.next());
- 	    			System.out.println("hermano:    "+hermano);
  	    			hayHermano = hayHermano || personasEnLaFoto.contains(hermano);
- 	    			System.out.println(hayHermano);
  	    		}
  	    		if (hayHermano)
  	    			fotos.add(parser_nombre(foto));
