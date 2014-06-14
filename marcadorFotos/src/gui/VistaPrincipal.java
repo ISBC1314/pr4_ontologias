@@ -2,7 +2,9 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -44,6 +47,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JButton JButton_fotosDelRey;
 	private JButton JButton_marcarFoto;
 	private JButton JButton_eliminarMarca;
+	private JButton JButton_busquedaPersonal;
 	
 	private JPanel JPanel_marcar;
 	private JPanel JPanel_buscar;
@@ -55,10 +59,14 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JPanel JPanel_marcarFoto;
 	private JPanel JPanel_busqueda;
 	private JPanel JPanel_resultado2;
+	private JPanel JPanel_busquedaPersonal;
 	
 	private JLabel JLabel_tituloFoto;
 	private JLabel JLabel_foto;
 	private JLabel JLabel_marcado;
+	private JLabel JLabel_cargoReal;
+	private JLabel JLabel_persona;
+	private JLabel JLabel_lugar;
 	
 	private JTabbedPane JTabbedPane_principal;
 	private JScrollPane JScrollPane_resultado1;
@@ -68,6 +76,10 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JComboBox<String> JComboBox_item;
 	private JComboBox<String> JComboBox_fotos;
 	private JComboBox<String> JComboBox_tipoMarca;
+	private JComboBox<String> JComboBox_cargoReal;
+	private JComboBox<String> JComboBox_lugar;
+	private JComboBox<String> JComboBox_persona;
+	
 	
 	private JList<String> JList_resultado1;
 	private JList<ImageIcon> JList_resultado2;
@@ -78,23 +90,25 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		initialize(panel);
 		cargarComboBoxFotos();
 		cargarComboBoxItems();
+		cargarComboBoxBusqueda();
 		cargarResultado(JTabbedPane_principal.getSelectedIndex(), JComboBox_tipoMarca.getSelectedIndex());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 	}
 	
 	public void initialize(JPanel panelOnt){
 		setTitle("Marcador y recuperador de fotos");
-		getContentPane().setLayout(new MigLayout("","[300.00,grow]50[550.00,grow]","[]"));
+		getContentPane().setLayout(new MigLayout("","[300.00,grow]10[600.00,grow]","[]"));
 		
 		JPanel_OntoBrigde = panelOnt;
 		JPanel_OntoBrigde.setBackground(Color.WHITE);
 		JPanel_OntoBrigde.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Ontology Structure", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		JPanel_OntoBrigde.setBounds(10, 11, 239, 420);
+		//JPanel_OntoBrigde.setBounds(10, 11, 239, 420);
 		getContentPane().add(JPanel_OntoBrigde,"cell 0 0");
 		
 		JTabbedPane_principal = new JTabbedPane(JTabbedPane.TOP);
-		JTabbedPane_principal.setBounds(259, 11, 463, 344);
+		JTabbedPane_principal.setPreferredSize(new Dimension(600,400));
 		getContentPane().add(JTabbedPane_principal,"cell 1 0");
 		
 		/******************* PANEL MARCAR *******************/
@@ -170,11 +184,12 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JPanel_buscar = new JPanel();
 		JTabbedPane_principal.addTab("Buscar", null, JPanel_buscar, null);
-		JPanel_buscar.setLayout(new MigLayout("","[300.00,grow]50[150.00,grow]","[]"));
+		JPanel_buscar.setLayout(new MigLayout("","[200.00,grow]20[180.00,grow]","[]"));
 		
 		JPanel_busqueda  = new JPanel();
 		JPanel_buscar.add(JPanel_busqueda,"cell 0 0");
-		JPanel_busqueda.setLayout(new MigLayout("","[150.00,grow]10[150.00,grow]","[75.00,grow]10[75.00,grow][]"));
+		JPanel_busqueda.setLayout(new MigLayout("","[200.00,grow]","[50.00,grow]10[50.00,grow]10[50.00,grow]10[50.00,grow]10[100.00,grow][]"));
+		JPanel_busqueda.setPreferredSize(new Dimension(170,400));
 		
 		JButton_fotosDelRey = new JButton("Fotos del rey");
 		JButton_fotosDelRey.addActionListener(this);
@@ -186,15 +201,57 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JButton_fotosDeTrabajo = new JButton("Fotos de trabajo");
 		JButton_fotosDeTrabajo.addActionListener(this);
-		JPanel_busqueda.add(JButton_fotosDeTrabajo,"cell 1 0");
+		JPanel_busqueda.add(JButton_fotosDeTrabajo,"cell 0 2");
 		
 		JButton_fotosFamiliares = new JButton("Fotos familiares");
 		JButton_fotosFamiliares.addActionListener(this);
-		JPanel_busqueda.add(JButton_fotosFamiliares,"cell 1 1");
+		JPanel_busqueda.add(JButton_fotosFamiliares,"cell 0 3");
+		
+		JPanel_busquedaPersonal = new JPanel();
+		JPanel_busqueda.add(JPanel_busquedaPersonal,"cell 0 4");
+		JPanel_busquedaPersonal.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Busqueda personal:", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		JPanel_busquedaPersonal.setLayout(new MigLayout("","[100.00,grow]10[40.00,grow]","[30.00,grow]10[30.00,grow]10[30.00,grow]"));
+		
+		JPanel JPanel_cargoReal = new JPanel();
+		JPanel_cargoReal.setLayout(new MigLayout("","[]","[]5[]"));
+		JPanel_busquedaPersonal.add(JPanel_cargoReal, "cell 0 0");
+		JLabel_cargoReal = new JLabel("Cargo real:");
+		JLabel_cargoReal.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel_cargoReal.setFont(new Font("Tahoma", Font.BOLD, 12));
+		//JLabel_cargoReal.setForeground(new Color(202,255,112));
+		JPanel_cargoReal.add(JLabel_cargoReal,"cell 0 0");
+		JComboBox_cargoReal = new JComboBox<String>();
+		JPanel_cargoReal.add(JComboBox_cargoReal,"cell 0 1");
+		
+		JPanel JPanel_persona = new JPanel();
+		JPanel_persona.setLayout(new MigLayout("","[]","[]5[]"));
+		JPanel_busquedaPersonal.add(JPanel_persona, "cell 0 1");
+		JLabel_persona = new JLabel("Nombre persona:");
+		JLabel_persona.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel_persona.setFont(new Font("Tahoma", Font.BOLD, 12));
+		//JLabel_persona.setForeground(new Color(202,255,112));
+		JPanel_persona.add(JLabel_persona,"cell 0 0");
+		JComboBox_persona = new JComboBox<String>();
+		JPanel_persona.add(JComboBox_persona,"cell 0 1");
+		
+		JPanel JPanel_lugar = new JPanel();
+		JPanel_lugar.setLayout(new MigLayout("","[]","[]5[]"));
+		JPanel_busquedaPersonal.add(JPanel_lugar, "cell 0 2");
+		JLabel_lugar = new JLabel("Lugar:");
+		JLabel_lugar.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel_lugar.setFont(new Font("Tahoma", Font.BOLD, 12));
+		//JLabel_lugar.setForeground(new Color(202,255,112));
+		JPanel_lugar.add(JLabel_lugar,"cell 0 0");
+		JComboBox_lugar = new JComboBox<String>();
+		JPanel_lugar.add(JComboBox_lugar,"cell 0 1");
+		
+		JButton_busquedaPersonal = new JButton("Buscar");
+		JPanel_busquedaPersonal.add(JButton_busquedaPersonal,"cell 1 0 1 2");
 		
 		JPanel_resultado2 = new JPanel();
 		JPanel_buscar.add(JPanel_resultado2,"cell 1 0");
 		JScrollPane_resultado2 = new JScrollPane();
+		JScrollPane_resultado2.setPreferredSize(new Dimension(200,400));
 		JPanel_resultado2.add(JScrollPane_resultado2);
 		
 		JList_resultado2 = new JList<ImageIcon>();
@@ -224,6 +281,36 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			JComboBox_item.addItem(items.get(i));
 		
 		SwingUtilities.updateComponentTreeUI(this);
+	}
+	
+	public void cargarComboBoxBusqueda(){
+		List<String> items_personas = controlador.getPropiedad("Familia");
+		List<String> items_lugares = controlador.getPropiedad("Lugar");
+		List<String> items_cargos = controlador.getPropiedad("TituloReal");
+		
+		JComboBox_persona.addItem("Indiferente");
+		JComboBox_lugar.addItem("Indiferente");
+		JComboBox_cargoReal.addItem("Indiferente");
+		
+		for (int i=0;i<items_personas.size();i++)
+			JComboBox_persona.addItem(items_personas.get(i));
+		for (int i=0;i<items_lugares.size();i++)
+			JComboBox_lugar.addItem(items_lugares.get(i));
+		for (int i=0;i<items_cargos.size();i++)
+			JComboBox_cargoReal.addItem(items_cargos.get(i));
+		
+	}
+	
+	public void busquedaPersonal(){
+		String lugar = "";
+		String persona = "";
+		String cargo = "";
+		if (JComboBox_cargoReal.getSelectedIndex() != 0)
+			cargo = (String)JComboBox_cargoReal.getSelectedItem();
+		if (JComboBox_lugar.getSelectedIndex() != 0)
+			lugar = (String)JComboBox_lugar.getSelectedItem();
+		if (JComboBox_persona.getSelectedIndex() != 0)
+			persona = (String)JComboBox_persona.getSelectedItem();
 	}
 	
 	public void cargarResultado(int panel, int tipo){
@@ -287,6 +374,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			cargarResultado(JTabbedPane_principal.getSelectedIndex(),2);
 		else if (fuente.equals(JButton_fotosFamiliares))
 			cargarResultado(JTabbedPane_principal.getSelectedIndex(),3);
+		else if (fuente.equals(JButton_busquedaPersonal))
+			busquedaPersonal();
 	}
 	
 }

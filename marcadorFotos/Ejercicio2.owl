@@ -861,7 +861,7 @@
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto7.png</urlFoto>
+    >./fotos/Foto7.jpg</urlFoto>
     <esta_en>
       <Lugar rdf:ID="ActoOficial"/>
     </esta_en>
@@ -912,7 +912,7 @@
   </Foto>
   <Foto rdf:ID="Foto11">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto11.png</urlFoto>
+    >./fotos/Foto11.jpg</urlFoto>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <esta_en rdf:resource="#Despacho"/>

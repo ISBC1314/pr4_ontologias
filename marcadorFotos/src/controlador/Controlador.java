@@ -158,12 +158,17 @@ public class Controlador {
  	    			String hermano = parser_nombre(iteradorHermanos.next());
  	    			hayHermano = hayHermano || personasEnLaFoto.contains(hermano);
  	    		}
- 	    		if (hayHermano)
+ 	    		if (hayHermano && !(fotos.contains(parser_nombre(foto))))
  	    			fotos.add(parser_nombre(foto));
  	    	}
  	    	
 	    }
 	    return fotos;
+	}
+	
+	public List<String> getInfoPersonal(String cargo,String persona,String lugar){
+		List<String> fotos = new ArrayList<String>();
+		return fotos;
 	}
 	
 	public List<String> getInfoBusqueda(int tipo){

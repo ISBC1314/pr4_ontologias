@@ -1,4 +1,4 @@
-; Sat Jun 14 12:51:45 CEST 2014
+; Sat Jun 14 16:44:54 CEST 2014
 ; 
 ;+ (version "3.3.1")
 ;+ (build "Build 430")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ejercicio2_ProjectKB_Instance_329]
-		[Ejercicio2_ProjectKB_Instance_330]
-		[Ejercicio2_ProjectKB_Instance_331]
-		[Ejercicio2_ProjectKB_Instance_332]
-		[Ejercicio2_ProjectKB_Instance_333]))
+		[Ejercicio2_ProjectKB_Instance_334]
+		[Ejercicio2_ProjectKB_Instance_335]
+		[Ejercicio2_ProjectKB_Instance_336]
+		[Ejercicio2_ProjectKB_Instance_337]
+		[Ejercicio2_ProjectKB_Instance_338]))
 
 ([CLSES_TAB] of  Widget
 
@@ -136,33 +136,33 @@
 ([Ejercicio2_ProjectKB_Instance_32] of  Property_List
 )
 
-([Ejercicio2_ProjectKB_Instance_329] of  String
-
-	(name "owl:Thing")
-	(string_value "%3ANAME"))
-
 ([Ejercicio2_ProjectKB_Instance_33] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [Ejercicio2_ProjectKB_Instance_34])
 	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
 
-([Ejercicio2_ProjectKB_Instance_330] of  String
+([Ejercicio2_ProjectKB_Instance_334] of  String
+
+	(name "owl:Thing")
+	(string_value "%3ANAME"))
+
+([Ejercicio2_ProjectKB_Instance_335] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Ejercicio2_ProjectKB_Instance_331] of  String
+([Ejercicio2_ProjectKB_Instance_336] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Ejercicio2_ProjectKB_Instance_332] of  String
+([Ejercicio2_ProjectKB_Instance_337] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Ejercicio2_ProjectKB_Instance_333] of  String
+([Ejercicio2_ProjectKB_Instance_338] of  String
 
 	(name "owl:Class")
 	(string_value "%3ANAME"))
