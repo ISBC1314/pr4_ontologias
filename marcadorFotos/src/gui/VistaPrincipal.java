@@ -62,24 +62,22 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JComboBox<String> JComboBox_relacion;
 	private JComboBox<String> JComboBox_item;
 	
-	public VistaPrincipal() {
+	public VistaPrincipal(JPanel panel) {
 		this.setBounds(50,50,900,500);
-		initialize();
+		initialize(panel);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void initialize(){
+	public void initialize(JPanel panelOnt){
 		setTitle("Marcador y recuperador de fotos");
 		getContentPane().setLayout(new MigLayout("","[300.00,grow]50[550.00,grow]","[]"));
 		
-		/*
 		JPanel_OntoBrigde = panelOnt;
 		JPanel_OntoBrigde.setBackground(Color.WHITE);
 		JPanel_OntoBrigde.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0)), "Ontology Structure", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JPanel_OntoBrigde.setBounds(10, 11, 239, 420);
 		getContentPane().add(JPanel_OntoBrigde,"cell 0 0");
-		*/
 		
 		JTabbedPane_principal = new JTabbedPane(JTabbedPane.TOP);
 		JTabbedPane_principal.setBounds(259, 11, 463, 344);
@@ -177,7 +175,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
 			JLabel_foto.setIcon(icono);
 	}
-	
+	/*
 	public static void main(String[] args){
 				try {
 					
@@ -188,7 +186,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 					e.printStackTrace();
 				}
 	}
-	
+	*/
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		
