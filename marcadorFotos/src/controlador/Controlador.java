@@ -166,8 +166,61 @@ public class Controlador {
 	    return fotos;
 	}
 	
+	public List<String> getFotoPropiedad(String valor, String propiedad){
+		List<String> fotos = new ArrayList<String>();
+	    Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    while (iteradorFotos.hasNext()){
+	    	String foto = iteradorFotos.next();
+	    	Iterator<String> iteradorPropiedad =  ob.listPropertyValue(foto,propiedad);
+	    	boolean esValor = false;
+	    	while (iteradorPropiedad.hasNext() && !esValor){
+	    		String val = parser_nombre(iteradorPropiedad.next());
+	    		esValor = val.equals(valor);
+	    	}
+	    	if (esValor || valor.equals(""))
+	    		fotos.add(parser_nombre(foto));
+	    }
+	    return fotos;
+	}
+	
+	public List<String> getFotosTitulo(String valor, String propiedad){
+		List<String> fotos = new ArrayList<String>();
+	    Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    while (iteradorFotos.hasNext()){
+	    	String foto = iteradorFotos.next();
+	    	Iterator<String> iteradorPersonas =  ob.listPropertyValue(foto,"aparece_en");
+	    	boolean esValor = false;
+	    	while (iteradorPersonas.hasNext() && !esValor){
+	    		String persona = parser_nombre(iteradorPersonas.next());
+ 	    		Iterator<String> iteradorTitulo = ob.listPropertyValue(persona,propiedad);
+ 	    		boolean esTitulo = false;
+ 	    		while (iteradorTitulo.hasNext() && !esTitulo){
+ 	    			String titulo = parser_nombre(iteradorTitulo.next());
+ 	    			esTitulo = titulo.equals(valor);
+ 	    			esValor = esTitulo;
+ 	    		}
+	    	}
+	    	if (esValor)
+	    		fotos.add(parser_nombre(foto));
+	    }
+	    return fotos;
+	}
+	
 	public List<String> getInfoPersonal(String cargo,String persona,String lugar){
 		List<String> fotos = new ArrayList<String>();
+		
+		List<String> fotosLugar = getFotoPropiedad(lugar,"esta_en");
+		List<String> fotosPersona = getFotoPropiedad(persona,"aparece_en");
+		List<String> fotosCargo = getFotosTitulo(cargo,"tiene_titulo_de");
+		
+		Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    
+		while (iteradorFotos.hasNext()){
+		    	String foto = parser_nombre(iteradorFotos.next());
+		    	if (fotosLugar.contains(foto) && fotosPersona.contains(foto) && fotosCargo.contains(foto))
+		    		fotos.add(foto);
+		 }
+		
 		return fotos;
 	}
 	

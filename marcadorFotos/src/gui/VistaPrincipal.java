@@ -247,6 +247,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JButton_busquedaPersonal = new JButton("Buscar");
 		JPanel_busquedaPersonal.add(JButton_busquedaPersonal,"cell 1 0 1 2");
+		JButton_busquedaPersonal.addActionListener(this);
 		
 		JPanel_resultado2 = new JPanel();
 		JPanel_buscar.add(JPanel_resultado2,"cell 1 0");
@@ -311,6 +312,14 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			lugar = (String)JComboBox_lugar.getSelectedItem();
 		if (JComboBox_persona.getSelectedIndex() != 0)
 			persona = (String)JComboBox_persona.getSelectedItem();
+		
+		((DefaultListModel<ImageIcon>)JList_resultado2.getModel()).removeAllElements();
+		List<String> items = controlador.getInfoPersonal(cargo,persona,lugar);
+		for (int i=0;i<items.size();i++){	
+			String nombre = items.get(i);
+			ImageIcon icono = new ImageIcon(controlador.getUrlFoto(nombre));
+			((DefaultListModel<ImageIcon>)JList_resultado2.getModel()).addElement(icono);
+		}
 	}
 	
 	public void cargarResultado(int panel, int tipo){
