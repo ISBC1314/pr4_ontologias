@@ -904,7 +904,7 @@
   </Foto>
   <Foto rdf:ID="Foto11">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto11.png</urlFoto>
+    >./fotos/Foto11.png</urlFoto>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <esta_en rdf:resource="#Despacho"/>
