@@ -152,7 +152,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_marcar.add(JPanel_marcarFoto,"cell 0 1");
 		JPanel_marcarFoto.setLayout(new MigLayout("","[]30[]20[]20[]","[]"));
 		
-		JComboBox_relacion = new JComboBox<String>(new String[] {"aparece en..." ,"está en..."});
+		JComboBox_relacion = new JComboBox<String>(new String[]{"aparece_en","esta_en"});
 		JPanel_marcarFoto.add(JComboBox_relacion,"cell 1 0");
 		JComboBox_relacion.addActionListener(this);
 		
@@ -206,7 +206,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	
 	public void cargarComboBoxFotos(){
 		List<String> items;
-		items = controlador.getFotos();
+		items = controlador.getPropiedad("Foto");
 		for (int i=0;i<items.size();i++)
 			JComboBox_fotos.addItem(items.get(i));
 	}
@@ -214,9 +214,9 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	public void cargarComboBoxItems(){
 		List<String> items;
 		if (JComboBox_relacion.getSelectedIndex() == 0)
-			items = controlador.getPersonas();
+			items = controlador.getPropiedad("Persona");
 		else
-			items = controlador.getLugares();
+			items = controlador.getPropiedad("Lugar");
 		
 		JComboBox_item.removeAllItems();
 		for (int i=0;i<items.size();i++)
@@ -230,9 +230,9 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			((DefaultListModel<String>)JList_resultado1.getModel()).removeAllElements();
 			List<String> items;
 			if (tipo == 0)
-				items = controlador.getPersonasFoto((String)JComboBox_fotos.getSelectedItem());
+				items = controlador.getInfoFoto("aparece_en", (String)JComboBox_fotos.getSelectedItem());
 			else
-				items = controlador.getLugaresFoto((String)JComboBox_fotos.getSelectedItem()); 
+				items = controlador.getInfoFoto("esta_en", (String)JComboBox_fotos.getSelectedItem());
 			
 			for (int i=0;i<items.size();i++){	
 				String nombre = items.get(i);
@@ -248,7 +248,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	}
 	
 	public void marcarFoto(){
-		
+		controlador.marcaFoto((String)JComboBox_fotos.getSelectedItem(),(String)JComboBox_relacion.getSelectedItem(),(String)JComboBox_item.getSelectedItem());
+		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
 	public void mostrarFoto(String url){

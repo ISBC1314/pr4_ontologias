@@ -54,59 +54,24 @@ public class Controlador {
 		return personas;
 	}
 	
-	public void marcaFoto(String relacion,String item) {
-		//ob.createOntProperty("Foto"+(numFotoActual+1),relacion,item);
-		//ob.save("Ejercicio2.owl");
+	public void marcaFoto(String foto, String relacion,String item) {
+		ob.createOntProperty(foto,relacion,item);
+		ob.save("Ejercicio2.owl");
 		
 	}
 	
-	public List<String> getFotos(){
-		List<String> fotos = new ArrayList<String>();
-		Iterator<String> it = ob.listInstances("Foto");
+	public List<String> getPropiedad(String propiedad){
+		List<String> lista = new ArrayList<String>();
+		Iterator<String> it = ob.listInstances(propiedad);
 		while (it.hasNext()){
 			String nombre = it.next();
 			System.out.println(nombre);
-			fotos.add(parser_nombre(nombre));	
+			lista.add(parser_nombre(nombre));	
 		}
-		return fotos;
+		return lista;
 	}
 	
-	public List<String> getPersonas(){
-		List<String> personas = new ArrayList<String>();
-		Iterator<String> it = ob.listInstances("Persona");
-		while (it.hasNext()){
-			String nombre = it.next();
-			System.out.println(nombre);
-			personas.add(parser_nombre(nombre));	
-		}
-		return personas;
-	}
-	
-	public List<String> getPersonasFoto(String foto){
-		List<String> personas = new ArrayList<String>();
-		Iterator<String> iterador = ob.listPropertyValue(foto,"aparece_en");
-		
-		while (iterador.hasNext()){
-			String nombre = iterador.next();
-			nombre = parser_nombre(nombre);
-			personas.add(nombre);	
-		}
-		
-		return personas;
-	}
-	
-	public List<String> getLugares(){
-		List<String> lugares = new ArrayList<String>();
-		Iterator<String> it = ob.listInstances("Lugar");
-		while (it.hasNext()){
-			String nombre = it.next();
-			System.out.println(nombre);
-			lugares.add(parser_nombre(nombre));	
-		}
-		return lugares;
-	}
-	
-	public List<String> getLugaresFoto(String foto){
+	public List<String> getInfoFoto(String propiedad, String foto){
 		List<String> personas = new ArrayList<String>();
 		Iterator<String> iterador = ob.listPropertyValue(foto,"esta_en");
 		
@@ -115,7 +80,6 @@ public class Controlador {
 			nombre = parser_nombre(nombre);
 			personas.add(nombre);	
 		}
-		
 		return personas;
 	}
 	
