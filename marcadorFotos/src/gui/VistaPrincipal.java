@@ -20,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -69,6 +70,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		this.setBounds(50,50,900,500);
 		initialize(panel);
 		cargarComboBoxFotos();
+		cargarComboBoxItems();
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -131,8 +133,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_marcarFoto.setLayout(new MigLayout("","[]30[]20[]20[]","[]"));
 		
 		JComboBox_relacion = new JComboBox<String>(new String[] {"aparece en..." ,"está en..."});
-		//JComboBox_relacion.setModel(new DefaultComboBoxModel<String>(new String[] {"aparece en..." ,"está en..."}));
 		JPanel_marcarFoto.add(JComboBox_relacion,"cell 1 0");
+		JComboBox_relacion.addActionListener(this);
 		
 		JComboBox_item = new JComboBox<String>();
 		JPanel_marcarFoto.add(JComboBox_item,"cell 2 0");
@@ -193,9 +195,11 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		else
 			items = controlador.getLugares();
 		
+		JComboBox_item.removeAllItems();
 		for (int i=0;i<items.size();i++)
-			JComboBox_fotos.addItem(items.get(i));
-
+			JComboBox_item.addItem(items.get(i));
+		
+		SwingUtilities.updateComponentTreeUI(this);
 	}
 	
 	public void mostrarFoto(String url){
