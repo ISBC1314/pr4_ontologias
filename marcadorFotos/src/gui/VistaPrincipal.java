@@ -146,6 +146,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JScrollPane_resultado1 = new JScrollPane();
 		JPanel_infoResultado.add(JScrollPane_resultado1);
+		JScrollPane_resultado1.setPreferredSize(new Dimension(100,150));
 		
 		JList_resultado1 = new JList<String>();
 		JList_resultado1.setForeground(Color.BLACK);
