@@ -184,7 +184,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	}
 	
 	public void mostrarFoto(String url){
-			ImageIcon icono = new ImageIcon("./fotos/"+url);
+			ImageIcon icono = new ImageIcon("./fotos/"+url+".jpg");
 			icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
 			JLabel_foto.setIcon(icono);
 	}
