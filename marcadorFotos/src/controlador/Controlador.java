@@ -82,6 +82,19 @@ public class Controlador {
 		return personas;
 	}
 	
+	public List<String> getPersonasFoto(String foto){
+		List<String> personas = new ArrayList<String>();
+		Iterator<String> iterador = ob.listPropertyValue(foto,"aparece_en");
+		
+		while (iterador.hasNext()){
+			String nombre = iterador.next();
+			nombre = parser_nombre(nombre);
+			personas.add(nombre);	
+		}
+		
+		return personas;
+	}
+	
 	public List<String> getLugares(){
 		List<String> lugares = new ArrayList<String>();
 		Iterator<String> it = ob.listInstances("Lugar");
@@ -91,6 +104,19 @@ public class Controlador {
 			lugares.add(parser_nombre(nombre));	
 		}
 		return lugares;
+	}
+	
+	public List<String> getLugaresFoto(String foto){
+		List<String> personas = new ArrayList<String>();
+		Iterator<String> iterador = ob.listPropertyValue(foto,"esta_en");
+		
+		while (iterador.hasNext()){
+			String nombre = iterador.next();
+			nombre = parser_nombre(nombre);
+			personas.add(nombre);	
+		}
+		
+		return personas;
 	}
 	
 	private String parser_nombre(String string) {

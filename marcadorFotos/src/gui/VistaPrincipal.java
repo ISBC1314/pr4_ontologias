@@ -12,14 +12,17 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -64,6 +67,10 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JComboBox<String> JComboBox_relacion;
 	private JComboBox<String> JComboBox_item;
 	private JComboBox<String> JComboBox_fotos;
+	private JComboBox<String> JComboBox_tipoMarca;
+	
+	private JList<String> JList_resultado1;
+	private JList<String> JList_resultado2;
 	
 	public VistaPrincipal(JPanel panel,Controlador controlador) {
 		this.controlador = controlador;
@@ -71,6 +78,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		initialize(panel);
 		cargarComboBoxFotos();
 		cargarComboBoxItems();
+		cargarResultado(1, JComboBox_tipoMarca.getSelectedIndex());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -113,21 +121,33 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_foto.add(JComboBox_fotos,"cell 0 2");
 		JComboBox_fotos.addActionListener(this);
 		
+		//Panel resultado
 		JPanel_resultado1 = new JPanel();
 		JPanel_infoFoto.add(JPanel_resultado1,"cell 1 0");
-		JPanel_resultado1.setLayout(new MigLayout("","[]","[240.00,grow]20[40.00,grow,center]"));
+		JPanel_resultado1.setLayout(new MigLayout("","[]","[200.00,grow]20[30.00,grow,center]10[40.00,grow,center]"));
 		
 		JPanel_infoResultado = new JPanel();
 		JPanel_infoResultado.setBorder(new TitledBorder(null, "Resultados", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		JPanel_resultado1.add(JPanel_infoResultado,"cell 0 0");
 		
 		JScrollPane_resultado1 = new JScrollPane();
-		JPanel_resultado1.add(JScrollPane_resultado1);
+		JPanel_infoResultado.add(JScrollPane_resultado1);
+		
+		JList_resultado1 = new JList<String>();
+		JList_resultado1.setForeground(Color.BLACK);
+		JList_resultado1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		JList_resultado1.setModel(new DefaultListModel<String>());
+		JScrollPane_resultado1.setViewportView(JList_resultado1);
+		
+		JComboBox_tipoMarca = new JComboBox<String>(new String[] {"Personas" ,"Lugares"});
+		JPanel_resultado1.add(JComboBox_tipoMarca,"cell 0 1");
+		JComboBox_tipoMarca.addActionListener(this);
 		
 		JButton_eliminarMarca = new JButton("Eliminar");
-		JPanel_resultado1.add(JButton_eliminarMarca,"cell 0 1");
+		JPanel_resultado1.add(JButton_eliminarMarca,"cell 0 2");
 		JButton_eliminarMarca.addActionListener(this);
 		
+		//Panal marcar
 		JPanel_marcarFoto = new JPanel();
 		JPanel_marcar.add(JPanel_marcarFoto,"cell 0 1");
 		JPanel_marcarFoto.setLayout(new MigLayout("","[]30[]20[]20[]","[]"));
@@ -141,6 +161,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JButton_marcarFoto = new JButton("Marcar foto");
 		JPanel_marcarFoto.add(JButton_marcarFoto,"cell 3 0");
+		JButton_marcarFoto.addActionListener(this);
 		
 		JLabel_marcado = new JLabel("Opciones marcado:");
 		JPanel_marcarFoto.add(JLabel_marcado,"cell 0 0");
@@ -175,6 +196,12 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JPanel_buscar.add(JPanel_resultado2,"cell 1 0");
 		JScrollPane_resultado2 = new JScrollPane();
 		JPanel_resultado2.add(JScrollPane_resultado2);
+		
+		JList_resultado2 = new JList<String>();
+		JList_resultado2.setForeground(Color.BLACK);
+		JList_resultado2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		JList_resultado2.setModel(new DefaultListModel<String>());
+		JScrollPane_resultado2.setViewportView(JList_resultado2);
 	}
 	
 	public void cargarComboBoxFotos(){
@@ -182,10 +209,6 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		items = controlador.getFotos();
 		for (int i=0;i<items.size();i++)
 			JComboBox_fotos.addItem(items.get(i));
-	}
-	
-	public void cargarComboBoxRelaciones(){
-		
 	}
 	
 	public void cargarComboBoxItems(){
@@ -202,11 +225,38 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		SwingUtilities.updateComponentTreeUI(this);
 	}
 	
+	public void cargarResultado(int panel, int tipo){
+		if (panel == 1){
+			((DefaultListModel<String>)JList_resultado1.getModel()).removeAllElements();
+			List<String> items;
+			if (tipo == 0)
+				items = controlador.getPersonasFoto(controlador.getUrlFoto((String)JComboBox_fotos.getSelectedItem()));
+			else
+				items = controlador.getLugaresFoto(controlador.getUrlFoto((String)JComboBox_fotos.getSelectedItem())); 
+			
+			for (int i=0;i<items.size();i++){	
+				String nombre = items.get(i);
+				((DefaultListModel<String>)JList_resultado1.getModel()).addElement(nombre);
+			}
+		}
+		else{
+			((DefaultListModel<String>)JList_resultado2.getModel()).removeAllElements();
+			//TODO
+		}
+			
+		
+	}
+	
+	public void marcarFoto(){
+		
+	}
+	
 	public void mostrarFoto(String url){
 		System.out.println(controlador.getUrlFoto(url));
 		ImageIcon icono = new ImageIcon(controlador.getUrlFoto(url));
 		icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
 		JLabel_foto.setIcon(icono);
+		cargarResultado(0,JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
@@ -215,6 +265,11 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			mostrarFoto((String)JComboBox_fotos.getSelectedItem());
 		if (fuente.equals(JComboBox_relacion))
 			cargarComboBoxItems();
+		if (fuente.equals(JComboBox_tipoMarca))
+			cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
+		if (fuente.equals(JButton_marcarFoto))
+			marcarFoto();
+		
 	}
 
 }
