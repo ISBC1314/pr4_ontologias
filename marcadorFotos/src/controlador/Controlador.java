@@ -87,6 +87,100 @@ public class Controlador {
 		return personas;
 	}
 	
+	public List<String> getFotosFamilia(){
+		List<String> fotos = new ArrayList<String>();
+	    Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    while (iteradorFotos.hasNext()){
+	    	String foto = iteradorFotos.next();
+	    	Iterator<String> iteradorPersonas =  ob.listPropertyValue(foto,"aparece_en");
+	    	boolean esFamilia = false;
+	    	int count = 0;
+	    	while (iteradorPersonas.hasNext() && !esFamilia){
+	    		String nombre_aux = parser_nombre(iteradorPersonas.next());
+	    		if (ob.existsInstance(nombre_aux,"Familia"))
+	    			count++;
+	    		if (count >= 3)
+	    			esFamilia = true;
+	    	}
+	    	
+	    	if (esFamilia)
+	    		fotos.add(parser_nombre(foto));
+	    }	    
+	    return fotos;
+	}
+	
+	public List<String> getFotosRey(){
+		List<String> fotos = new ArrayList<String>();
+	    Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    while (iteradorFotos.hasNext()){
+	    	String foto = iteradorFotos.next();
+	    	Iterator<String> iteradorPersonas =  ob.listPropertyValue(foto,"aparece	_en");
+	    	boolean apereceRey = false;
+	    	while (iteradorPersonas.hasNext() && !apereceRey){
+	    		String nombre_aux = parser_nombre(iteradorPersonas.next());
+	    		apereceRey = nombre_aux.equals("Juan_Carlos_I");
+	    	}
+	    	if (apereceRey)
+	    		fotos.add(parser_nombre(foto));
+	    }	    
+	    return fotos;
+	}
+	
+	public List<String> getFotosTrabajo(){
+		List<String> fotos = new ArrayList<String>();
+	    Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    while (iteradorFotos.hasNext()){
+	    	String foto = iteradorFotos.next();
+	    	Iterator<String> iteradorPersonas =  ob.listPropertyValue(foto,"esta_en");
+	    	boolean esTrabajo = false;
+	    	while (iteradorPersonas.hasNext() && !esTrabajo){
+	    		String lugar_aux = parser_nombre(iteradorPersonas.next());
+	    		esTrabajo = (lugar_aux.equals("Despacho")) || (lugar_aux.equals("ActoOficial"));
+	    	}
+	    	if (esTrabajo)
+	    		fotos.add(parser_nombre(foto));
+	    }	    
+	    return fotos;
+	}
+	
+	public List<String> getFotosHermanos(){
+		List<String> fotos = new ArrayList<String>();
+	    Iterator<String> iteradorFotos = ob.listInstances("Foto");
+	    while (iteradorFotos.hasNext()){
+	    	String foto = iteradorFotos.next();
+	    	Iterator<String> iteradorPersonas =  ob.listPropertyValue(foto,"aparece_en");
+ 	    	List<String> personasEnLaFoto = new ArrayList<String>();
+ 	    	while (iteradorPersonas.hasNext()){
+ 	    		String persona = parser_nombre(iteradorPersonas.next());
+ 	    		personasEnLaFoto.add(persona);
+ 	    		System.out.println("persona:    "+persona);
+ 	    		Iterator<String> iteradorHermanos = ob.listPropertyValue(persona,"es_hermanoa_de");
+ 	    		boolean hayHermano = false;
+ 	    		while (iteradorHermanos.hasNext() && !hayHermano){
+ 	    			String hermano = parser_nombre(iteradorHermanos.next());
+ 	    			System.out.println("hermano:    "+hermano);
+ 	    			hayHermano = hayHermano || personasEnLaFoto.contains(hermano);
+ 	    			System.out.println(hayHermano);
+ 	    		}
+ 	    		if (hayHermano)
+ 	    			fotos.add(parser_nombre(foto));
+ 	    	}
+ 	    	
+	    }
+	    return fotos;
+	}
+	
+	public List<String> getInfoBusqueda(int tipo){
+		List<String> fotos = new ArrayList<String>();
+		switch (tipo){
+		case 0: return getFotosRey();
+		case 1: return getFotosTrabajo();
+		case 2: return getFotosHermanos();
+		case 3: return getFotosFamilia();
+		default: return fotos;
+		}
+	}
+	
 	private String parser_nombre(String string) {
 		return string.substring(string.indexOf('#')+1);
 	}

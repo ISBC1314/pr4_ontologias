@@ -30,6 +30,7 @@ import javax.swing.border.TitledBorder;
 import net.miginfocom.swing.MigLayout;
 import controlador.Controlador;
 
+@SuppressWarnings("serial")
 public class VistaPrincipal extends JFrame implements ActionListener{
 
 	private Controlador controlador;
@@ -78,7 +79,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		initialize(panel);
 		cargarComboBoxFotos();
 		cargarComboBoxItems();
-		cargarResultado(1, JComboBox_tipoMarca.getSelectedIndex());
+		cargarResultado(JTabbedPane_principal.getSelectedIndex(), JComboBox_tipoMarca.getSelectedIndex());
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -101,7 +102,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JPanel_marcar = new JPanel();
 		JTabbedPane_principal.addTab("Marcar", null, JPanel_marcar, null);
-		JPanel_marcar.setLayout(new MigLayout("","[]","[300.00,grow]50[250.00,grow]"));
+		JPanel_marcar.setLayout(new MigLayout("","[]","[300.00,grow]20[250.00,grow]"));
 		
 		JPanel_infoFoto = new JPanel();
 		JPanel_marcar.add(JPanel_infoFoto,"cell 0 0");
@@ -170,11 +171,11 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		
 		JPanel_buscar = new JPanel();
 		JTabbedPane_principal.addTab("Buscar", null, JPanel_buscar, null);
-		JPanel_buscar.setLayout(new MigLayout("","[350.00,grow]50[0.00,grow]","[]"));
+		JPanel_buscar.setLayout(new MigLayout("","[300.00,grow]50[150.00,grow]","[]"));
 		
 		JPanel_busqueda  = new JPanel();
 		JPanel_buscar.add(JPanel_busqueda,"cell 0 0");
-		JPanel_busqueda.setLayout(new MigLayout("","[150.00,grow]50[150.00,grow]","[100.00,grow]50[100.00,grow]"));
+		JPanel_busqueda.setLayout(new MigLayout("","[150.00,grow]10[150.00,grow]","[75.00,grow]10[75.00,grow][]"));
 		
 		JButton_fotosDelRey = new JButton("Fotos del rey");
 		JButton_fotosDelRey.addActionListener(this);
@@ -214,7 +215,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	public void cargarComboBoxItems(){
 		List<String> items;
 		if (JComboBox_relacion.getSelectedIndex() == 0)
-			items = controlador.getPropiedad("Persona");
+			items = controlador.getPropiedad("Familia");
 		else
 			items = controlador.getPropiedad("Lugar");
 		
@@ -226,7 +227,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	}
 	
 	public void cargarResultado(int panel, int tipo){
-		if (panel == 1){
+		if (panel == 0){
 			((DefaultListModel<String>)JList_resultado1.getModel()).removeAllElements();
 			List<String> items = controlador.getInfoFoto((String)JComboBox_tipoMarca.getSelectedItem(), (String)JComboBox_fotos.getSelectedItem());
 			for (int i=0;i<items.size();i++){	
@@ -236,20 +237,25 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		}
 		else{
 			((DefaultListModel<String>)JList_resultado2.getModel()).removeAllElements();
-			//TODO
+			List<String> items = controlador.getInfoBusqueda(tipo);
+			for (int i=0;i<items.size();i++){	
+				String nombre = items.get(i);
+				((DefaultListModel<String>)JList_resultado2.getModel()).addElement(nombre);
+			}
 		}
+		SwingUtilities.updateComponentTreeUI(this);
 	}
 	
 	public void marcarFoto(){
 		controlador.addMarca((String)JComboBox_fotos.getSelectedItem(),(String)JComboBox_relacion.getSelectedItem(),(String)JComboBox_item.getSelectedItem());
-		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
+		cargarResultado(JTabbedPane_principal.getSelectedIndex(),JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
 	public void eliminarMarca(){
 		int index = JList_resultado1.getSelectedIndex();
 		if (index > -1)
 			controlador.removeMarca((String)JComboBox_fotos.getSelectedItem(),(String)JComboBox_tipoMarca.getSelectedItem(),(String)JList_resultado1.getSelectedValue());
-		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
+		cargarResultado(JTabbedPane_principal.getSelectedIndex(),JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
 	public void mostrarFoto(String url){
@@ -257,7 +263,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		ImageIcon icono = new ImageIcon(controlador.getUrlFoto(url));
 		icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
 		JLabel_foto.setIcon(icono);
-		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
+		cargarResultado(JTabbedPane_principal.getSelectedIndex(),JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
@@ -267,11 +273,19 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		else if (fuente.equals(JComboBox_relacion))
 			cargarComboBoxItems();
 		else if (fuente.equals(JComboBox_tipoMarca))
-			cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
+			cargarResultado(JTabbedPane_principal.getSelectedIndex(),JComboBox_tipoMarca.getSelectedIndex());
 		else if (fuente.equals(JButton_marcarFoto))
 			marcarFoto();
 		else if (fuente.equals(JButton_eliminarMarca))
 			eliminarMarca();
+		else if (fuente.equals(JButton_fotosDelRey))
+			cargarResultado(JTabbedPane_principal.getSelectedIndex(),0);
+		else if (fuente.equals(JButton_fotosDeTrabajo))
+			cargarResultado(JTabbedPane_principal.getSelectedIndex(),1);
+		else if (fuente.equals(JButton_fotosHermanos))
+			cargarResultado(JTabbedPane_principal.getSelectedIndex(),2);
+		else if (fuente.equals(JButton_fotosFamiliares))
+			cargarResultado(JTabbedPane_principal.getSelectedIndex(),3);
 	}
 	
 }
