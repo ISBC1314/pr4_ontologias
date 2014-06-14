@@ -139,7 +139,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JList_resultado1.setModel(new DefaultListModel<String>());
 		JScrollPane_resultado1.setViewportView(JList_resultado1);
 		
-		JComboBox_tipoMarca = new JComboBox<String>(new String[] {"Personas" ,"Lugares"});
+		JComboBox_tipoMarca = new JComboBox<String>(new String[] {"aparece_en" ,"esta_en"});
 		JPanel_resultado1.add(JComboBox_tipoMarca,"cell 0 1");
 		JComboBox_tipoMarca.addActionListener(this);
 		
@@ -228,12 +228,7 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	public void cargarResultado(int panel, int tipo){
 		if (panel == 1){
 			((DefaultListModel<String>)JList_resultado1.getModel()).removeAllElements();
-			List<String> items;
-			if (tipo == 0)
-				items = controlador.getInfoFoto("aparece_en", (String)JComboBox_fotos.getSelectedItem());
-			else
-				items = controlador.getInfoFoto("esta_en", (String)JComboBox_fotos.getSelectedItem());
-			
+			List<String> items = controlador.getInfoFoto((String)JComboBox_tipoMarca.getSelectedItem(), (String)JComboBox_fotos.getSelectedItem());
 			for (int i=0;i<items.size();i++){	
 				String nombre = items.get(i);
 				((DefaultListModel<String>)JList_resultado1.getModel()).addElement(nombre);
@@ -243,12 +238,17 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			((DefaultListModel<String>)JList_resultado2.getModel()).removeAllElements();
 			//TODO
 		}
-			
-		
 	}
 	
 	public void marcarFoto(){
-		controlador.marcaFoto((String)JComboBox_fotos.getSelectedItem(),(String)JComboBox_relacion.getSelectedItem(),(String)JComboBox_item.getSelectedItem());
+		controlador.addMarca((String)JComboBox_fotos.getSelectedItem(),(String)JComboBox_relacion.getSelectedItem(),(String)JComboBox_item.getSelectedItem());
+		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
+	}
+	
+	public void eliminarMarca(){
+		int index = JList_resultado1.getSelectedIndex();
+		if (index > -1)
+			controlador.removeMarca((String)JComboBox_fotos.getSelectedItem(),(String)JComboBox_tipoMarca.getSelectedItem(),(String)JList_resultado1.getSelectedValue());
 		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
@@ -257,19 +257,21 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		ImageIcon icono = new ImageIcon(controlador.getUrlFoto(url));
 		icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
 		JLabel_foto.setIcon(icono);
-		cargarResultado(0,JComboBox_tipoMarca.getSelectedIndex());
+		cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {
 		Object fuente = arg0.getSource();
 		if (fuente.equals(JComboBox_fotos))
 			mostrarFoto((String)JComboBox_fotos.getSelectedItem());
-		if (fuente.equals(JComboBox_relacion))
+		else if (fuente.equals(JComboBox_relacion))
 			cargarComboBoxItems();
-		if (fuente.equals(JComboBox_tipoMarca))
+		else if (fuente.equals(JComboBox_tipoMarca))
 			cargarResultado(1,JComboBox_tipoMarca.getSelectedIndex());
-		if (fuente.equals(JButton_marcarFoto))
+		else if (fuente.equals(JButton_marcarFoto))
 			marcarFoto();
+		else if (fuente.equals(JButton_eliminarMarca))
+			eliminarMarca();
 		
 	}
 

@@ -54,10 +54,14 @@ public class Controlador {
 		return personas;
 	}
 	
-	public void marcaFoto(String foto, String relacion,String item) {
+	public void addMarca(String foto, String relacion,String item) {
 		ob.createOntProperty(foto,relacion,item);
+		ob.save("Ejercicio2.owl");	
+	}
+	
+	public void removeMarca(String foto, String relacion, String persona) {
+		ob.deleteOntProperty(foto,relacion,persona);
 		ob.save("Ejercicio2.owl");
-		
 	}
 	
 	public List<String> getPropiedad(String propiedad){
