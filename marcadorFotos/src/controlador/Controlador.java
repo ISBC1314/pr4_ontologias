@@ -73,7 +73,7 @@ public class Controlador {
 	
 	public List<String> getInfoFoto(String propiedad, String foto){
 		List<String> personas = new ArrayList<String>();
-		Iterator<String> iterador = ob.listPropertyValue(foto,"esta_en");
+		Iterator<String> iterador = ob.listPropertyValue(foto,propiedad);
 		
 		while (iterador.hasNext()){
 			String nombre = iterador.next();
