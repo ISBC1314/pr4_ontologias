@@ -272,7 +272,6 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			marcarFoto();
 		else if (fuente.equals(JButton_eliminarMarca))
 			eliminarMarca();
-		
 	}
-
+	
 }
