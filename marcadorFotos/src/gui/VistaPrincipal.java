@@ -230,9 +230,9 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 			((DefaultListModel<String>)JList_resultado1.getModel()).removeAllElements();
 			List<String> items;
 			if (tipo == 0)
-				items = controlador.getPersonasFoto(controlador.getUrlFoto((String)JComboBox_fotos.getSelectedItem()));
+				items = controlador.getPersonasFoto((String)JComboBox_fotos.getSelectedItem());
 			else
-				items = controlador.getLugaresFoto(controlador.getUrlFoto((String)JComboBox_fotos.getSelectedItem())); 
+				items = controlador.getLugaresFoto((String)JComboBox_fotos.getSelectedItem()); 
 			
 			for (int i=0;i<items.size();i++){	
 				String nombre = items.get(i);
