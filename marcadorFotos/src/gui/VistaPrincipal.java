@@ -30,8 +30,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 
 	private Controlador controlador;
 	
-	private static final int IMAGE_WIDTH = 565;
-	private static final int IMAGE_HEIGHT = 340;
+	private static final int IMAGE_WIDTH = 280;
+	private static final int IMAGE_HEIGHT = 250;
 	
 	private JButton JButton_fotosHermanos;
 	private JButton JButton_fotosRománticas;
@@ -46,7 +46,6 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	private JPanel JPanel_buscar;
 	private JPanel JPanel_infoFoto;
 	private JPanel JPanel_foto;
-	private JPanel JPanel_fotoImg;
 	private JPanel JPanel_resultado1;
 	private JPanel JPanel_infoResultado;
 	private JPanel JPanel_OntoBrigde;
@@ -106,8 +105,8 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 		JLabel_tituloFoto = new JLabel("Nombre foto");
 		JPanel_foto.add(JLabel_tituloFoto,"cell 0 0");
 		
-		JPanel_fotoImg = new JPanel();
-		JPanel_foto.add(JPanel_fotoImg,"cell 0 1");
+		JLabel_foto = new JLabel();
+		JPanel_foto.add(JLabel_foto,"cell 0 1");
 		
 		JComboBox_fotos = new JComboBox<String>();
 		JPanel_foto.add(JComboBox_fotos,"cell 0 2");
@@ -184,9 +183,10 @@ public class VistaPrincipal extends JFrame implements ActionListener{
 	}
 	
 	public void mostrarFoto(String url){
-			ImageIcon icono = new ImageIcon("./fotos/"+url+".jpg");
-			icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
-			JLabel_foto.setIcon(icono);
+		System.out.println(controlador.getUrlFoto(url));
+		ImageIcon icono = new ImageIcon(controlador.getUrlFoto(url));
+		icono = new ImageIcon(icono.getImage().getScaledInstance(IMAGE_WIDTH, IMAGE_HEIGHT, Image.SCALE_DEFAULT));
+		JLabel_foto.setIcon(icono);
 	}
 	
 	public void actionPerformed(ActionEvent arg0) {

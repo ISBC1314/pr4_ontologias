@@ -825,6 +825,8 @@
     <es_divorciado-de rdf:resource="#Elena_Borbon"/>
   </Persona>
   <Foto rdf:ID="Foto19">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto19.jpg</urlFoto>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <aparece_en rdf:resource="#Jaime_Marichalar"/>
     <aparece_en rdf:resource="#Juan_Urdangarin"/>
@@ -835,8 +837,6 @@
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <aparece_en rdf:resource="#Elena_Borbon"/>
     <aparece_en rdf:resource="#Miguel_Urdangarin"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto19.jpg</urlFoto>
     <aparece_en rdf:resource="#Iñaki_Urdangarin"/>
     <aparece_en rdf:resource="#Cristina_Borbon"/>
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
@@ -853,7 +853,7 @@
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto7.png</urlFoto>
+    >./fotos/Foto7.png</urlFoto>
     <esta_en>
       <Lugar rdf:ID="ActoOficial"/>
     </esta_en>
@@ -864,7 +864,7 @@
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <esta_en rdf:resource="#Palacio"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto18.jpg</urlFoto>
+    >./fotos/Foto18.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto8">
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
@@ -874,12 +874,12 @@
     <aparece_en rdf:resource="#Leonor_Borbon"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto8.jpg</urlFoto>
+    >./fotos/Foto8.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto9">
     <esta_en rdf:resource="#ActoOficial"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto9.png</urlFoto>
+    >./fotos/Foto9.jpg</urlFoto>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
   </Foto>
@@ -889,18 +889,18 @@
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto20.jpg</urlFoto>
+    >./fotos/Foto20.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto30">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto30.jpg</urlFoto>
+    >./fotos/Foto30.jpg</urlFoto>
     <aparece_en rdf:resource="#Cristina_Borbon"/>
   </Foto>
   <Lugar rdf:ID="Despacho"/>
   <Foto rdf:ID="Foto21">
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto21.jpg</urlFoto>
+    >./fotos/Foto21.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto11">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -918,7 +918,7 @@
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto25.jpg</urlFoto>
+    >./fotos/Foto25.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto24">
     <aparece_en rdf:resource="#Elena_Borbon"/>
@@ -928,9 +928,9 @@
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <aparece_en rdf:resource="#Leonor_Borbon"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto24.jpg</urlFoto>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto24.jpg</urlFoto>
     <aparece_en rdf:resource="#Sofia_Borbon"/>
   </Foto>
   <Foto rdf:ID="Foto10">
@@ -938,11 +938,11 @@
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <esta_en rdf:resource="#Despacho"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto10.png</urlFoto>
+    >./fotos/Foto10.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto23">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto23.jpg</urlFoto>
+    >./fotos/Foto23.jpg</urlFoto>
     <esta_en rdf:resource="#Boda"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
@@ -951,14 +951,14 @@
   </Foto>
   <Foto rdf:ID="Foto13">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto13.png</urlFoto>
+    >./fotos/Foto13.jpg</urlFoto>
     <aparece_en rdf:resource="#Sofia_Borbon"/>
     <aparece_en rdf:resource="#Leonor_Borbon"/>
     <esta_en rdf:resource="#OtrosActos"/>
   </Foto>
   <Foto rdf:ID="Foto1">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto1.png</urlFoto>
+    >./fotos/Foto1.jpg</urlFoto>
     <aparece_en rdf:resource="#Iñaki_Urdangarin"/>
     <aparece_en rdf:resource="#Pablo_Urdangarin"/>
     <aparece_en rdf:resource="#Miguel_Urdangarin"/>
@@ -980,22 +980,22 @@
   <Foto rdf:ID="Foto22">
     <esta_en rdf:resource="#OtrosActos"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto22.jpg</urlFoto>
+    >./fotos/Foto22.jpg</urlFoto>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
   </Foto>
   <Foto rdf:ID="Foto12">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto12.png</urlFoto>
+    >./fotos/Foto12.jpg</urlFoto>
     <esta_en rdf:resource="#Despacho"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
   </Foto>
   <Foto rdf:ID="Foto2">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto2.jpg</urlFoto>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <aparece_en rdf:resource="#Felipe_Marichalar"/>
     <aparece_en rdf:resource="#Elena_Borbon"/>
     <aparece_en rdf:resource="#Juan_Urdangarin"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto2.png</urlFoto>
     <aparece_en rdf:resource="#Leonor_Borbon"/>
     <aparece_en rdf:resource="#Iñaki_Urdangarin"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
@@ -1015,7 +1015,7 @@
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <aparece_en rdf:resource="#Leonor_Borbon"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto29.jpg</urlFoto>
+    >./fotos/Foto29.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto15">
     <aparece_en rdf:resource="#Elena_Borbon"/>
@@ -1026,7 +1026,7 @@
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto15.jpg</urlFoto>
+    >./fotos/Foto15.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto3">
     <aparece_en rdf:resource="#Sofia_Grecia"/>
@@ -1035,20 +1035,20 @@
     <esta_en rdf:resource="#ActoOficial"/>
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto3.jpg</urlFoto>
+    >./fotos/Foto3.jpg</urlFoto>
     <aparece_en rdf:resource="#Elena_Borbon"/>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
   </Foto>
   <Foto rdf:ID="Foto28">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto28.jpg</urlFoto>
+    >./fotos/Foto28.jpg</urlFoto>
     <esta_en rdf:resource="#ActoOficial"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
   </Foto>
   <Foto rdf:ID="Foto14">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto14.jpg</urlFoto>
+    >./fotos/Foto14.jpg</urlFoto>
     <aparece_en rdf:resource="#Elena_Borbon"/>
     <esta_en rdf:resource="#Boda"/>
   </Foto>
@@ -1060,23 +1060,23 @@
     <aparece_en rdf:resource="#Leonor_Borbon"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto4.jpg</urlFoto>
+    >./fotos/Foto4.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto27">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto27.jpg</urlFoto>
+    >./fotos/Foto27.jpg</urlFoto>
     <esta_en rdf:resource="#Despacho"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
   </Foto>
   <Foto rdf:ID="Foto17">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto17.jpg</urlFoto>
+    >./fotos/Foto17.jpg</urlFoto>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <esta_en rdf:resource="#Despacho"/>
   </Foto>
   <Foto rdf:ID="Foto5">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto5.jpg</urlFoto>
+    >./fotos/Foto5.jpg</urlFoto>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <aparece_en rdf:resource="#Sofia_Borbon"/>
     <aparece_en rdf:resource="#Letizia_Ortiz"/>
@@ -1087,17 +1087,19 @@
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
     <esta_en rdf:resource="#ActoOficial"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto26.jpg</urlFoto>
+    >./fotos/Foto26.jpg</urlFoto>
   </Foto>
   <Foto rdf:ID="Foto16">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto16.jpg</urlFoto>
+    >./fotos/Foto16.jpg</urlFoto>
     <esta_en rdf:resource="#ActoOficial"/>
     <aparece_en rdf:resource="#Felipe_Borbon"/>
     <aparece_en rdf:resource="#Sofia_Grecia"/>
     <aparece_en rdf:resource="#Juan_Carlos_I"/>
   </Foto>
   <Foto rdf:ID="Foto6">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto6.jpg</urlFoto>
     <aparece_en rdf:resource="#Pablo_Urdangarin"/>
     <aparece_en rdf:resource="#Victoria_Marichalar"/>
     <aparece_en rdf:resource="#Felipe_Marichalar"/>
@@ -1106,8 +1108,6 @@
     <aparece_en rdf:resource="#Irene_Urdangarin"/>
     <aparece_en rdf:resource="#Sofia_Borbon"/>
     <aparece_en rdf:resource="#Miguel_Urdangarin"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/foto6.jpg</urlFoto>
   </Foto>
 </rdf:RDF>
 

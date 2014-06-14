@@ -77,4 +77,9 @@ public class Controlador {
 		return string.substring(string.indexOf('#')+1);
 	}
 	
+	public String getUrlFoto(String s) {
+		String string = ob.listPropertyValue(s,"urlFoto").next();
+		return string.substring(0,string.indexOf("^^"));
+	}
+	
 }
