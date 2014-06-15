@@ -200,7 +200,7 @@ public class Controlador {
  	    			esValor = esTitulo;
  	    		}
 	    	}
-	    	if (esValor)
+	    	if (esValor || valor.equals(""))
 	    		fotos.add(parser_nombre(foto));
 	    }
 	    return fotos;

@@ -1,4 +1,4 @@
-; Sun Jun 15 11:44:39 CEST 2014
+; Sun Jun 15 14:11:36 CEST 2014
 ; 
 ;+ (version "3.3.1")
 ;+ (build "Build 430")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ejercicio2_ProjectKB_Instance_217]
-		[Ejercicio2_ProjectKB_Instance_218]
-		[Ejercicio2_ProjectKB_Instance_219]
-		[Ejercicio2_ProjectKB_Instance_220]
-		[Ejercicio2_ProjectKB_Instance_221]))
+		[Ejercicio2_ProjectKB_Instance_191]
+		[Ejercicio2_ProjectKB_Instance_192]
+		[Ejercicio2_ProjectKB_Instance_193]
+		[Ejercicio2_ProjectKB_Instance_194]
+		[Ejercicio2_ProjectKB_Instance_195]))
 
 ([CLSES_TAB] of  Widget
 
@@ -73,36 +73,36 @@
 ([Ejercicio2_ProjectKB_Instance_19] of  Property_List
 )
 
+([Ejercicio2_ProjectKB_Instance_191] of  String
+
+	(name "owl:Class")
+	(string_value "%3ANAME"))
+
+([Ejercicio2_ProjectKB_Instance_192] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ejercicio2_ProjectKB_Instance_193] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Ejercicio2_ProjectKB_Instance_194] of  String
+
+	(name "owl:Thing")
+	(string_value "%3ANAME"))
+
+([Ejercicio2_ProjectKB_Instance_195] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
 ([Ejercicio2_ProjectKB_Instance_2] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [Ejercicio2_ProjectKB_Instance_3])
 	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
-
-([Ejercicio2_ProjectKB_Instance_217] of  String
-
-	(name "owl:Class")
-	(string_value "%3ANAME"))
-
-([Ejercicio2_ProjectKB_Instance_218] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ejercicio2_ProjectKB_Instance_219] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ejercicio2_ProjectKB_Instance_220] of  String
-
-	(name "owl:Thing")
-	(string_value "%3ANAME"))
-
-([Ejercicio2_ProjectKB_Instance_221] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
 
 ([Ejercicio2_ProjectKB_Instance_3] of  Property_List
 )
@@ -7048,12 +7048,12 @@
 		[KB_713803_Instance_693]
 		[KB_313796_Instance_943]
 		[KB_938545_Instance_495]
-		[STANDARD_CLASS_FORM_WIDGET]
 		[KB_713803_Instance_303]
+		[STANDARD_CLASS_FORM_WIDGET]
 		[KB_313796_Instance_852]
 		[Instance_1005]
-		[KB_301165_Instance_1013]
 		[Instance_581]
+		[KB_301165_Instance_1013]
 		[KB_938545_Instance_412]
 		[KB_764103_Instance_545]
 		[KB_713803_Instance_390]
@@ -7096,12 +7096,12 @@
 		"owl:Class"
 		"rdfs:Container"
 		"owl:Ontology"
-		"xsd:gMonthDay"
-		":TO"
 		"owl:DataRange"
+		":TO"
+		"xsd:gMonthDay"
 		"xsd:NMTOKEN"
-		"xsd:QName"
 		"xsd:unsignedInt"
+		"xsd:QName"
 		"owl:FunctionalProperty"
 		"xsd:long"
 		"owl:onProperty"
@@ -7129,41 +7129,41 @@
 		"xsd:double"
 		"xsd:decimal"
 		"rdf:subject"
-		"owl:sameAs"
-		"xsd:Name"
-		"owl:SymmetricProperty"
 		"rdf:value"
+		"owl:SymmetricProperty"
+		"xsd:Name"
+		"owl:sameAs"
 		"xsd:byte"
-		"owl:differentFrom"
 		"owl:AllDifferent"
-		"rdf:Property"
+		"owl:differentFrom"
 		"owl:Nothing"
-		"owl:cardinality"
+		"rdf:Property"
 		"owl:InverseFunctionalProperty"
+		"owl:cardinality"
 		"xsd:nonNegativeInteger"
 		"rdf:Statement"
-		":FROM"
 		"rdfs:Literal"
-		"xsd:anySimpleType"
+		":FROM"
 		"owl:disjointWith"
+		"xsd:anySimpleType"
 		"owl:minCardinality"
 		"xsd:ID"
 		"xsd:gDay"
 		"xsd:gYearMonth"
-		"xsd:NCName"
 		"owl:distinctMembers"
+		"xsd:NCName"
 		"xsd:nonPositiveInteger"
 		"rdfs:Datatype"
-		"xsd:token"
-		":DIRECTED-BINARY-RELATION"
 		"owl:TransitiveProperty"
-		"xsd:normalizedString"
-		"xsd:ENTITY"
+		":DIRECTED-BINARY-RELATION"
+		"xsd:token"
 		"xsd:IDREF"
+		"xsd:ENTITY"
+		"xsd:normalizedString"
 		"xsd:gMonth"
-		"owl:maxCardinality"
-		"owl:oneOf"
 		"rdf:type"
+		"owl:oneOf"
+		"owl:maxCardinality"
 		"rdf:object")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
