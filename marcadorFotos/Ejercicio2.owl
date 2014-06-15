@@ -1,330 +1,288 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="windows-1252"?>
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
     xmlns="http://www.owl-ontologies.com/Ontology1402519238.owl#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:daml="http://www.daml.org/2001/03/daml+oil#"
-  xml:base="http://www.owl-ontologies.com/Ontology1402519238.owl">
-  <owl:Ontology rdf:about=""/>
-  <owl:Class rdf:ID="Hija">
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <owl:Ontology rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Abuelo">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:ID="Hijos"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Abuelos"/>
           <owl:Restriction>
             <owl:hasValue>
-              <Sexo rdf:ID="Femenino"/>
+              <Sexo rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
             </owl:hasValue>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:ID="tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Yerno">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Suegros">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:ID="Yernos"/>
-          <owl:Restriction>
-            <owl:hasValue>
-              <Sexo rdf:ID="Masculino"/>
-            </owl:hasValue>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="#Hijos">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:someValuesFrom>
-              <owl:Class rdf:ID="Familia"/>
-            </owl:someValuesFrom>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:ID="tiene_progenitor"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Nieto">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:ID="Nietos"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Abuelo">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:ID="Abuelos"/>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-            <owl:hasValue rdf:resource="#Masculino"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Sexo"/>
-  <owl:Class rdf:ID="Suegro">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:ID="Suegros"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Hermanos">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Familia"/>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
-            </owl:onProperty>
-            <owl:someValuesFrom>
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="#Familia"/>
-                  <owl:Restriction>
-                    <owl:someValuesFrom rdf:resource="#Familia"/>
-                    <owl:onProperty>
-                      <owl:ObjectProperty rdf:ID="es_progenitor_de"/>
-                    </owl:onProperty>
-                  </owl:Restriction>
-                </owl:intersectionOf>
-              </owl:Class>
-            </owl:someValuesFrom>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty>
-          <owl:SymmetricProperty rdf:ID="es_hermanoa_de"/>
-        </owl:onProperty>
-        <owl:someValuesFrom rdf:resource="#Familia"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="Primos">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
           <owl:Restriction>
             <owl:someValuesFrom>
               <owl:Restriction>
-                <owl:someValuesFrom rdf:resource="#Familia"/>
+                <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
                 <owl:onProperty>
-                  <owl:SymmetricProperty rdf:about="#es_hermanoa_de"/>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja"/>
                 </owl:onProperty>
               </owl:Restriction>
             </owl:someValuesFrom>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
             </owl:onProperty>
           </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Foto"/>
-  <owl:Class rdf:ID="Sobrino">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Abuela">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Abuelos"/>
+          <owl:Restriction>
+            <owl:hasValue>
+              <Sexo rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            </owl:hasValue>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Lugar"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Yernos">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:ID="Sobrinos"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="CuÃ±ados">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class>
-            <owl:unionOf rdf:parseType="Collection">
-              <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                  <owl:Class rdf:about="#Familia"/>
-                  <owl:Restriction>
-                    <owl:onProperty>
-                      <owl:SymmetricProperty rdf:ID="tiene_pareja"/>
-                    </owl:onProperty>
-                    <owl:someValuesFrom rdf:resource="#Hermanos"/>
-                  </owl:Restriction>
-                </owl:intersectionOf>
-              </owl:Class>
+            <owl:someValuesFrom>
               <owl:Restriction>
                 <owl:onProperty>
-                  <owl:SymmetricProperty rdf:about="#es_hermanoa_de"/>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
                 </owl:onProperty>
-                <owl:someValuesFrom>
-                  <owl:Class rdf:ID="Matrimonio"/>
-                </owl:someValuesFrom>
+                <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
               </owl:Restriction>
-            </owl:unionOf>
-          </owl:Class>
-          <owl:Class rdf:about="#Familia"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Hijo">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Madre">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Padres"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sobrino">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
-            <owl:hasValue rdf:resource="#Masculino"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
           </owl:Restriction>
-          <owl:Class rdf:about="#Hijos"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sobrinos"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Prima">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Tia">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Tios"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Suegra">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
           </owl:Restriction>
-          <owl:Class rdf:about="#Primos"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Suegros"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="TituloReal"/>
-  <owl:Class rdf:ID="Esposa">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Primos">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:hasValue rdf:resource="#Femenino"/>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
             </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Restriction>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_hermanoa_de"/>
+                </owl:onProperty>
+                <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+              </owl:Restriction>
+            </owl:someValuesFrom>
           </owl:Restriction>
-          <owl:Class rdf:about="#Matrimonio"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Abuela">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Esposa">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Abuelos"/>
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Matrimonio"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Suegro">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Suegros"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Yerno">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Yernos"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Tios">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Padres">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Familia"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Tios">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
           <owl:Class>
             <owl:unionOf rdf:parseType="Collection">
               <owl:Restriction>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja"/>
+                </owl:onProperty>
                 <owl:someValuesFrom>
                   <owl:Class>
                     <owl:intersectionOf rdf:parseType="Collection">
-                      <owl:Class rdf:about="#Hermanos"/>
+                      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermanos"/>
                       <owl:Restriction>
-                        <owl:someValuesFrom rdf:resource="#Familia"/>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
+                          <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
                         </owl:onProperty>
+                        <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
                       </owl:Restriction>
                     </owl:intersectionOf>
                   </owl:Class>
                 </owl:someValuesFrom>
-                <owl:onProperty>
-                  <owl:SymmetricProperty rdf:about="#tiene_pareja"/>
-                </owl:onProperty>
               </owl:Restriction>
               <owl:Restriction>
-                <owl:onProperty>
-                  <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
-                </owl:onProperty>
                 <owl:someValuesFrom>
                   <owl:Class>
                     <owl:intersectionOf rdf:parseType="Collection">
-                      <owl:Class rdf:about="#Familia"/>
+                      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
                       <owl:Restriction>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:about="#es_progenitor_de"/>
-                        </owl:onProperty>
                         <owl:someValuesFrom>
                           <owl:Class>
                             <owl:intersectionOf rdf:parseType="Collection">
-                              <owl:Class rdf:about="#Familia"/>
+                              <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
                               <owl:Restriction>
-                                <owl:someValuesFrom rdf:resource="#Familia"/>
                                 <owl:onProperty>
-                                  <owl:ObjectProperty rdf:about="#es_progenitor_de"/>
+                                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
                                 </owl:onProperty>
+                                <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
                               </owl:Restriction>
                             </owl:intersectionOf>
                           </owl:Class>
                         </owl:someValuesFrom>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
+                        </owl:onProperty>
                       </owl:Restriction>
                     </owl:intersectionOf>
                   </owl:Class>
                 </owl:someValuesFrom>
+                <owl:onProperty>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
+                </owl:onProperty>
               </owl:Restriction>
             </owl:unionOf>
           </owl:Class>
@@ -332,834 +290,871 @@
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:about="#Matrimonio">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Primo">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Familia"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Primos"/>
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#Familia"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
             <owl:onProperty>
-              <owl:SymmetricProperty rdf:about="#tiene_pareja"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Sobrina">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Nuera">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
           </owl:Restriction>
-          <owl:Class rdf:about="#Sobrinos"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Yernos"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:about="#Nietos">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sexo"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Cuñada">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Cuñados"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Padre">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
-            <owl:someValuesFrom rdf:resource="#Hijos"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
           </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Padres"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:about="#Sobrinos">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hijo">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hijos"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Tio">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Tios"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#TituloReal"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Nieta">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Nietos"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermano">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermanos"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Prima">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Primos"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hija">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hijos"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermanos">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_hermanoa_de"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+                  <owl:Restriction>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
+                    </owl:onProperty>
+                    <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+                  </owl:Restriction>
+                </owl:intersectionOf>
+              </owl:Class>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Nietos">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:someValuesFrom>
-              <owl:Restriction>
-                <owl:someValuesFrom rdf:resource="#Familia"/>
-                <owl:onProperty>
-                  <owl:SymmetricProperty rdf:about="#es_hermanoa_de"/>
-                </owl:onProperty>
-              </owl:Restriction>
+              <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hijos"/>
             </owl:someValuesFrom>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
             </owl:onProperty>
           </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Madre">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sobrinos">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
-          </owl:Restriction>
-          <owl:Class rdf:ID="Padres"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Marido">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-            <owl:hasValue rdf:resource="#Masculino"/>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Matrimonio"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="#Padres">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#es_progenitor_de"/>
-            </owl:onProperty>
-            <owl:someValuesFrom rdf:resource="#Familia"/>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Nuera">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Femenino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Yernos"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Hermano">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Hermanos"/>
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Tia">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Tios"/>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Hermana">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Hermanos"/>
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Femenino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Primo">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Primos"/>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-            <owl:hasValue rdf:resource="#Masculino"/>
-          </owl:Restriction>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Suegra">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Femenino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Suegros"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:about="#Suegros">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Familia"/>
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#es_progenitor_de"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
             </owl:onProperty>
             <owl:someValuesFrom>
               <owl:Restriction>
                 <owl:onProperty>
-                  <owl:SymmetricProperty rdf:about="#tiene_pareja"/>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_hermanoa_de"/>
                 </owl:onProperty>
-                <owl:someValuesFrom rdf:resource="#Familia"/>
+                <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
               </owl:Restriction>
             </owl:someValuesFrom>
           </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Padre">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Marido">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
           </owl:Restriction>
-          <owl:Class rdf:about="#Padres"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Matrimonio"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Tio">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermana">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
-            <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
-            </owl:onProperty>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Tios"/>
-        </owl:intersectionOf>
-      </owl:Class>
-    </owl:equivalentClass>
-  </owl:Class>
-  <owl:Class rdf:ID="Nieta">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Nietos"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermanos"/>
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="CuÃ±ado">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Cuñado">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:hasValue rdf:resource="#Masculino"/>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
           </owl:Restriction>
-          <owl:Class rdf:about="#CuÃ±ados"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Cuñados"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="Lugar"/>
-  <owl:Class rdf:about="#Yernos">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Cuñados">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Restriction>
-            <owl:onProperty>
-              <owl:SymmetricProperty rdf:about="#tiene_pareja"/>
-            </owl:onProperty>
-            <owl:someValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+                  <owl:Restriction>
+                    <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Hermanos"/>
+                    <owl:onProperty>
+                      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja"/>
+                    </owl:onProperty>
+                  </owl:Restriction>
+                </owl:intersectionOf>
+              </owl:Class>
               <owl:Restriction>
-                <owl:someValuesFrom rdf:resource="#Familia"/>
+                <owl:someValuesFrom>
+                  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Matrimonio"/>
+                </owl:someValuesFrom>
                 <owl:onProperty>
-                  <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
+                  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_hermanoa_de"/>
                 </owl:onProperty>
               </owl:Restriction>
-            </owl:someValuesFrom>
-          </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
+            </owl:unionOf>
+          </owl:Class>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:about="#Abuelos">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Nieto">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
-            <owl:someValuesFrom rdf:resource="#Padres"/>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#es_progenitor_de"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
             </owl:onProperty>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
           </owl:Restriction>
-          <owl:Class rdf:about="#Familia"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Nietos"/>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="CuÃ±ada">
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sobrina">
     <owl:equivalentClass>
       <owl:Class>
         <owl:intersectionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#CuÃ±ados"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sobrinos"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Abuelos">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
           <owl:Restriction>
             <owl:onProperty>
-              <owl:ObjectProperty rdf:about="#tiene_sexo"/>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
             </owl:onProperty>
-            <owl:hasValue rdf:resource="#Femenino"/>
+            <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Padres"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Hijos">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Matrimonio">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
           </owl:Restriction>
         </owl:intersectionOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:ObjectProperty rdf:about="#tiene_sexo">
-    <rdfs:domain rdf:resource="#Familia"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_titulo_de">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#TituloReal"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#es_progenitor_de">
-    <rdfs:domain rdf:resource="#Familia"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_divorciado-de">
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#es_divorciado-de"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#esta_en">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Lugar"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_pareja"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#aparece_en">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
     <owl:inverseOf>
-      <owl:ObjectProperty rdf:about="#tiene_progenitor"/>
+      <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor"/>
     </owl:inverseOf>
-    <rdfs:range rdf:resource="#Familia"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="aparece_en">
-    <rdfs:domain rdf:resource="#Foto"/>
-    <rdfs:range rdf:resource="#Familia"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_progenitor">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#es_progenitor_de"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#tiene_progenitor">
-    <owl:inverseOf rdf:resource="#es_progenitor_de"/>
-    <rdfs:domain rdf:resource="#Familia"/>
-    <rdfs:range rdf:resource="#Familia"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#tiene_sexo">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="esta_en">
-    <rdfs:domain rdf:resource="#Foto"/>
-    <rdfs:range rdf:resource="#Lugar"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#es_hermanoa_de">
+    <owl:inverseOf rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#es_hermanoa_de"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Familia"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="tiene_titulo_de">
-    <rdfs:domain rdf:resource="#Familia"/>
-    <rdfs:range rdf:resource="#TituloReal"/>
-  </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:ID="urlFoto">
-    <rdfs:domain rdf:resource="#Foto"/>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#urlFoto">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto"/>
   </owl:DatatypeProperty>
-  <owl:SymmetricProperty rdf:about="#tiene_pareja">
-    <rdfs:domain rdf:resource="#Familia"/>
-    <owl:inverseOf rdf:resource="#tiene_pareja"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:range rdf:resource="#Familia"/>
-  </owl:SymmetricProperty>
-  <owl:SymmetricProperty rdf:about="#es_hermanoa_de">
-    <rdfs:range rdf:resource="#Familia"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="#Familia"/>
-    <owl:inverseOf rdf:resource="#es_hermanoa_de"/>
-  </owl:SymmetricProperty>
-  <owl:SymmetricProperty rdf:ID="es_divorciado-de">
-    <rdfs:range rdf:resource="#Familia"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:domain rdf:resource="#Familia"/>
-    <owl:inverseOf rdf:resource="#es_divorciado-de"/>
-  </owl:SymmetricProperty>
-  <Foto rdf:ID="Foto17">
-    <aparece_en>
-      <Familia rdf:ID="Juan_Carlos_I">
-        <tiene_sexo rdf:resource="#Masculino"/>
-        <tiene_titulo_de>
-          <TituloReal rdf:ID="Rey"/>
-        </tiene_titulo_de>
-        <tiene_pareja>
-          <Familia rdf:ID="Sofia_Grecia">
-            <tiene_titulo_de>
-              <TituloReal rdf:ID="Reina"/>
-            </tiene_titulo_de>
-            <tiene_sexo rdf:resource="#Femenino"/>
-            <tiene_pareja rdf:resource="#Juan_Carlos_I"/>
-            <es_progenitor_de>
-              <Familia rdf:ID="Felipe_Borbon">
-                <tiene_progenitor rdf:resource="#Sofia_Grecia"/>
-                <es_progenitor_de>
-                  <Familia rdf:ID="Sofia_Borbon">
+  <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Jaime_Marichalar">
+    <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+    <es_progenitor_de>
+      <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar">
+        <es_hermanoa_de>
+          <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar">
+            <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+            <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
+            <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Jaime_Marichalar"/>
+            <tiene_progenitor>
+              <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon">
+                <es_hermanoa_de>
+                  <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon">
+                    <es_progenitor_de>
+                      <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin">
+                        <es_hermanoa_de>
+                          <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin">
+                            <es_hermanoa_de>
+                              <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin">
+                                <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+                                <tiene_progenitor>
+                                  <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin">
+                                    <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+                                    <tiene_pareja rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                                    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+                                    <es_progenitor_de>
+                                      <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin">
+                                        <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+                                        <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                                        <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+                                        <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+                                        <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+                                        <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+                                      </Familia>
+                                    </es_progenitor_de>
+                                    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+                                    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+                                  </Familia>
+                                </tiene_progenitor>
+                                <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                                <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+                                <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+                                <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+                              </Familia>
+                            </es_hermanoa_de>
+                            <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+                            <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+                            <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+                            <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+                            <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                          </Familia>
+                        </es_hermanoa_de>
+                        <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+                        <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+                        <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+                        <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                        <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+                      </Familia>
+                    </es_progenitor_de>
                     <tiene_progenitor>
-                      <Familia rdf:ID="Letizia_Ortiz">
-                        <tiene_pareja rdf:resource="#Felipe_Borbon"/>
-                        <tiene_sexo rdf:resource="#Femenino"/>
-                        <es_progenitor_de rdf:resource="#Sofia_Borbon"/>
+                      <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia">
+                        <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                        <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
                         <es_progenitor_de>
-                          <Familia rdf:ID="Leonor_Borbon">
-                            <tiene_sexo rdf:resource="#Femenino"/>
+                          <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon">
+                            <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+                            <es_progenitor_de>
+                              <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon">
+                                <es_hermanoa_de>
+                                  <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon">
+                                    <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+                                    <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+                                    <tiene_progenitor>
+                                      <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz">
+                                        <tiene_titulo_de>
+                                          <TituloReal rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Princesa"/>
+                                        </tiene_titulo_de>
+                                        <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+                                        <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+                                        <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+                                        <tiene_pareja rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+                                      </Familia>
+                                    </tiene_progenitor>
+                                    <tiene_titulo_de>
+                                      <TituloReal rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Infanta"/>
+                                    </tiene_titulo_de>
+                                    <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+                                  </Familia>
+                                </es_hermanoa_de>
+                                <tiene_titulo_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Infanta"/>
+                                <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+                                <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+                                <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+                              </Familia>
+                            </es_progenitor_de>
+                            <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+                            <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                            <tiene_pareja rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
                             <tiene_titulo_de>
-                              <TituloReal rdf:ID="Infanta"/>
+                              <TituloReal rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Principe"/>
                             </tiene_titulo_de>
-                            <tiene_progenitor rdf:resource="#Letizia_Ortiz"/>
-                            <tiene_progenitor rdf:resource="#Felipe_Borbon"/>
-                            <es_hermanoa_de rdf:resource="#Sofia_Borbon"/>
+                            <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+                            <tiene_progenitor>
+                              <Familia rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I">
+                                <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+                                <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+                                <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+                                <tiene_pareja rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+                                <tiene_titulo_de>
+                                  <TituloReal rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Rey"/>
+                                </tiene_titulo_de>
+                                <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+                              </Familia>
+                            </tiene_progenitor>
+                            <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
                           </Familia>
                         </es_progenitor_de>
+                        <tiene_pareja rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+                        <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
                         <tiene_titulo_de>
-                          <TituloReal rdf:ID="Princesa"/>
+                          <TituloReal rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Reina"/>
                         </tiene_titulo_de>
                       </Familia>
                     </tiene_progenitor>
-                    <tiene_progenitor rdf:resource="#Felipe_Borbon"/>
-                    <tiene_sexo rdf:resource="#Femenino"/>
-                    <tiene_titulo_de rdf:resource="#Infanta"/>
-                    <es_hermanoa_de rdf:resource="#Leonor_Borbon"/>
-                  </Familia>
-                </es_progenitor_de>
-                <es_hermanoa_de>
-                  <Familia rdf:ID="Elena_Borbon">
-                    <es_hermanoa_de>
-                      <Familia rdf:ID="Cristina_Borbon">
-                        <es_progenitor_de>
-                          <Familia rdf:ID="Irene_Urdangarin">
-                            <tiene_sexo rdf:resource="#Femenino"/>
-                            <tiene_progenitor rdf:resource="#Cristina_Borbon"/>
-                            <tiene_progenitor>
-                              <Familia rdf:ID="IÃ±aki_Urdangarin">
-                                <es_progenitor_de>
-                                  <Familia rdf:ID="Pablo_Urdangarin">
-                                    <tiene_progenitor rdf:resource="#Cristina_Borbon"/>
-                                    <tiene_progenitor rdf:resource="#IÃ±aki_Urdangarin"/>
-                                    <tiene_sexo rdf:resource="#Masculino"/>
-                                    <es_hermanoa_de rdf:resource="#Irene_Urdangarin"/>
-                                    <es_hermanoa_de>
-                                      <Familia rdf:ID="Juan_Urdangarin">
-                                        <tiene_sexo rdf:resource="#Masculino"/>
-                                        <es_hermanoa_de rdf:resource="#Irene_Urdangarin"/>
-                                        <es_hermanoa_de>
-                                          <Familia rdf:ID="Miguel_Urdangarin">
-                                            <es_hermanoa_de rdf:resource="#Irene_Urdangarin"/>
-                                            <es_hermanoa_de rdf:resource="#Juan_Urdangarin"/>
-                                            <es_hermanoa_de rdf:resource="#Pablo_Urdangarin"/>
-                                            <tiene_progenitor rdf:resource="#Cristina_Borbon"/>
-                                            <tiene_progenitor rdf:resource="#IÃ±aki_Urdangarin"/>
-                                            <tiene_sexo rdf:resource="#Masculino"/>
-                                          </Familia>
-                                        </es_hermanoa_de>
-                                        <es_hermanoa_de rdf:resource="#Pablo_Urdangarin"/>
-                                        <tiene_progenitor rdf:resource="#Cristina_Borbon"/>
-                                        <tiene_progenitor rdf:resource="#IÃ±aki_Urdangarin"/>
-                                      </Familia>
-                                    </es_hermanoa_de>
-                                    <es_hermanoa_de rdf:resource="#Miguel_Urdangarin"/>
-                                  </Familia>
-                                </es_progenitor_de>
-                                <es_progenitor_de rdf:resource="#Miguel_Urdangarin"/>
-                                <es_progenitor_de rdf:resource="#Juan_Urdangarin"/>
-                                <es_progenitor_de rdf:resource="#Irene_Urdangarin"/>
-                                <tiene_pareja rdf:resource="#Cristina_Borbon"/>
-                                <tiene_sexo rdf:resource="#Masculino"/>
-                              </Familia>
-                            </tiene_progenitor>
-                            <es_hermanoa_de rdf:resource="#Juan_Urdangarin"/>
-                            <es_hermanoa_de rdf:resource="#Miguel_Urdangarin"/>
-                            <es_hermanoa_de rdf:resource="#Pablo_Urdangarin"/>
-                          </Familia>
-                        </es_progenitor_de>
-                        <tiene_progenitor rdf:resource="#Sofia_Grecia"/>
-                        <es_hermanoa_de rdf:resource="#Felipe_Borbon"/>
-                        <es_progenitor_de rdf:resource="#Miguel_Urdangarin"/>
-                        <tiene_pareja rdf:resource="#IÃ±aki_Urdangarin"/>
-                        <tiene_sexo rdf:resource="#Femenino"/>
-                        <es_progenitor_de rdf:resource="#Juan_Urdangarin"/>
-                        <es_progenitor_de rdf:resource="#Pablo_Urdangarin"/>
-                        <tiene_titulo_de rdf:resource="#Infanta"/>
-                        <tiene_progenitor rdf:resource="#Juan_Carlos_I"/>
-                        <es_hermanoa_de rdf:resource="#Elena_Borbon"/>
-                      </Familia>
-                    </es_hermanoa_de>
-                    <tiene_titulo_de rdf:resource="#Infanta"/>
-                    <tiene_progenitor rdf:resource="#Sofia_Grecia"/>
-                    <es_progenitor_de>
-                      <Familia rdf:ID="Felipe_Marichalar">
-                        <tiene_progenitor rdf:resource="#Elena_Borbon"/>
-                        <tiene_progenitor>
-                          <Familia rdf:ID="Jaime_Marichalar">
-                            <es_divorciado-de rdf:resource="#Elena_Borbon"/>
-                            <es_progenitor_de>
-                              <Familia rdf:ID="Victoria_Marichalar">
-                                <tiene_progenitor rdf:resource="#Elena_Borbon"/>
-                                <tiene_progenitor rdf:resource="#Jaime_Marichalar"/>
-                                <es_hermanoa_de rdf:resource="#Felipe_Marichalar"/>
-                                <tiene_sexo rdf:resource="#Femenino"/>
-                              </Familia>
-                            </es_progenitor_de>
-                            <es_progenitor_de rdf:resource="#Felipe_Marichalar"/>
-                            <tiene_sexo rdf:resource="#Masculino"/>
-                          </Familia>
-                        </tiene_progenitor>
-                        <tiene_sexo rdf:resource="#Masculino"/>
-                        <es_hermanoa_de rdf:resource="#Victoria_Marichalar"/>
-                      </Familia>
-                    </es_progenitor_de>
-                    <es_hermanoa_de rdf:resource="#Felipe_Borbon"/>
-                    <es_progenitor_de rdf:resource="#Victoria_Marichalar"/>
-                    <tiene_sexo rdf:resource="#Femenino"/>
-                    <es_divorciado-de rdf:resource="#Jaime_Marichalar"/>
-                    <tiene_progenitor rdf:resource="#Juan_Carlos_I"/>
+                    <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+                    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+                    <tiene_pareja rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+                    <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+                    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+                    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+                    <tiene_titulo_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Infanta"/>
+                    <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+                    <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
                   </Familia>
                 </es_hermanoa_de>
-                <es_hermanoa_de rdf:resource="#Cristina_Borbon"/>
-                <tiene_pareja rdf:resource="#Letizia_Ortiz"/>
-                <tiene_titulo_de>
-                  <TituloReal rdf:ID="Principe"/>
-                </tiene_titulo_de>
-                <es_progenitor_de rdf:resource="#Leonor_Borbon"/>
-                <tiene_progenitor rdf:resource="#Juan_Carlos_I"/>
-                <tiene_sexo rdf:resource="#Masculino"/>
+                <tiene_titulo_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Infanta"/>
+                <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+                <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
+                <es_hermanoa_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+                <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+                <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Femenino"/>
+                <es_divorciado-de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Jaime_Marichalar"/>
+                <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
               </Familia>
-            </es_progenitor_de>
-            <es_progenitor_de rdf:resource="#Elena_Borbon"/>
-            <es_progenitor_de rdf:resource="#Cristina_Borbon"/>
+            </tiene_progenitor>
           </Familia>
-        </tiene_pareja>
-        <es_progenitor_de rdf:resource="#Felipe_Borbon"/>
-        <es_progenitor_de rdf:resource="#Elena_Borbon"/>
-        <es_progenitor_de rdf:resource="#Cristina_Borbon"/>
+        </es_hermanoa_de>
+        <tiene_sexo rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Masculino"/>
+        <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Jaime_Marichalar"/>
+        <tiene_progenitor rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
       </Familia>
-    </aparece_en>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto17.jpg</urlFoto>
-    <esta_en>
-      <Lugar rdf:ID="Despacho"/>
-    </esta_en>
-  </Foto>
-  <Foto rdf:ID="Foto25">
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto25.jpg</urlFoto>
-    <esta_en>
-      <Lugar rdf:ID="Boda"/>
-    </esta_en>
-  </Foto>
-  <Lugar rdf:ID="Palacio"/>
-  <Foto rdf:ID="Foto13">
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto13.jpg</urlFoto>
-    <esta_en>
-      <Lugar rdf:ID="OtrosActos"/>
-    </esta_en>
-  </Foto>
-  <Foto rdf:ID="Foto30">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto30.jpg</urlFoto>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-  </Foto>
-  <Foto rdf:ID="Foto15">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto15.jpg</urlFoto>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#IÃ±aki_Urdangarin"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-  </Foto>
-  <Foto rdf:ID="Foto29">
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <esta_en rdf:resource="#Palacio"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto29.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto22">
-    <esta_en rdf:resource="#OtrosActos"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto22.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto10">
-    <esta_en rdf:resource="#Despacho"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto10.jpg</urlFoto>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-  </Foto>
-  <Foto rdf:ID="Foto2">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto2.jpg</urlFoto>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Marichalar"/>
-    <aparece_en rdf:resource="#Juan_Urdangarin"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#IÃ±aki_Urdangarin"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Pablo_Urdangarin"/>
-    <aparece_en rdf:resource="#Victoria_Marichalar"/>
-    <aparece_en rdf:resource="#Miguel_Urdangarin"/>
-    <aparece_en rdf:resource="#Irene_Urdangarin"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <esta_en rdf:resource="#Palacio"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-  </Foto>
-  <Foto rdf:ID="Foto26">
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <esta_en>
-      <Lugar rdf:ID="ActoOficial"/>
-    </esta_en>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto26.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto18">
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto18.jpg</urlFoto>
-    <esta_en rdf:resource="#Palacio"/>
-  </Foto>
-  <Foto rdf:ID="Foto12">
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <esta_en rdf:resource="#Despacho"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto12.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto20">
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto20.jpg</urlFoto>
-    <esta_en rdf:resource="#ActoOficial"/>
-  </Foto>
-  <Foto rdf:ID="Foto14">
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-    <esta_en rdf:resource="#Boda"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto14.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto5">
-    <esta_en rdf:resource="#Palacio"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto5.jpg</urlFoto>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-  </Foto>
-  <Foto rdf:ID="Foto23">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto23.jpg</urlFoto>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <esta_en rdf:resource="#Boda"/>
-  </Foto>
-  <Foto rdf:ID="Foto9">
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto9.jpg</urlFoto>
-    <esta_en rdf:resource="#ActoOficial"/>
-  </Foto>
-  <Foto rdf:ID="Foto16">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto16.jpg</urlFoto>
-    <esta_en rdf:resource="#ActoOficial"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-  </Foto>
-  <Foto rdf:ID="Foto6">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto6.jpg</urlFoto>
-    <aparece_en rdf:resource="#Pablo_Urdangarin"/>
-    <aparece_en rdf:resource="#Victoria_Marichalar"/>
-    <aparece_en rdf:resource="#Felipe_Marichalar"/>
-    <aparece_en rdf:resource="#Juan_Urdangarin"/>
-    <aparece_en rdf:resource="#Irene_Urdangarin"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Miguel_Urdangarin"/>
-  </Foto>
-  <Foto rdf:ID="Foto21">
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto21.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto7">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto7.jpg</urlFoto>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <esta_en rdf:resource="#ActoOficial"/>
-  </Foto>
-  <Foto rdf:ID="Foto24">
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Felipe_Marichalar"/>
-    <aparece_en rdf:resource="#Victoria_Marichalar"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto24.jpg</urlFoto>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-  </Foto>
-  <Foto rdf:ID="Foto3">
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-    <aparece_en rdf:resource="#IÃ±aki_Urdangarin"/>
-    <esta_en rdf:resource="#ActoOficial"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto3.jpg</urlFoto>
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-  </Foto>
-  <Foto rdf:ID="Foto11">
-    <esta_en rdf:resource="#Despacho"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto11.jpg</urlFoto>
-  </Foto>
-  <Foto rdf:ID="Foto4">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto4.jpg</urlFoto>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-  </Foto>
-  <Foto rdf:ID="Foto1">
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto1.jpg</urlFoto>
-    <aparece_en rdf:resource="#IÃ±aki_Urdangarin"/>
-    <aparece_en rdf:resource="#Pablo_Urdangarin"/>
-    <aparece_en rdf:resource="#Miguel_Urdangarin"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-    <aparece_en rdf:resource="#Irene_Urdangarin"/>
-    <aparece_en rdf:resource="#Juan_Urdangarin"/>
-    <esta_en rdf:resource="#Palacio"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-    <aparece_en rdf:resource="#Victoria_Marichalar"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Jaime_Marichalar"/>
-    <aparece_en rdf:resource="#Felipe_Marichalar"/>
-  </Foto>
-  <Foto rdf:ID="Foto28">
-    <esta_en rdf:resource="#ActoOficial"/>
-    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >./fotos/Foto28.jpg</urlFoto>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-  </Foto>
-  <Foto rdf:ID="Foto19">
+    </es_progenitor_de>
+    <es_progenitor_de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+    <es_divorciado-de rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+  </Familia>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto19">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >./fotos/Foto19.jpg</urlFoto>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <esta_en rdf:resource="#Palacio"/>
-    <aparece_en rdf:resource="#Jaime_Marichalar"/>
-    <aparece_en rdf:resource="#Juan_Urdangarin"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Elena_Borbon"/>
-    <aparece_en rdf:resource="#Miguel_Urdangarin"/>
-    <aparece_en rdf:resource="#IÃ±aki_Urdangarin"/>
-    <aparece_en rdf:resource="#Cristina_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Victoria_Marichalar"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <aparece_en rdf:resource="#Irene_Urdangarin"/>
-    <aparece_en rdf:resource="#Pablo_Urdangarin"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Jaime_Marichalar"/>
+    <esta_en>
+      <Lugar rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Palacio"/>
+    </esta_en>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
   </Foto>
-  <Foto rdf:ID="Foto8">
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto7">
+    <esta_en>
+      <Lugar rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+    </esta_en>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto7.jpg</urlFoto>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto18">
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Palacio"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto18.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto8">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >./fotos/Foto8.jpg</urlFoto>
-    <aparece_en rdf:resource="#Sofia_Grecia"/>
-    <aparece_en rdf:resource="#Leonor_Borbon"/>
-    <aparece_en rdf:resource="#Letizia_Ortiz"/>
-    <aparece_en rdf:resource="#Sofia_Borbon"/>
-    <aparece_en rdf:resource="#Felipe_Borbon"/>
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
   </Foto>
-  <Foto rdf:ID="Foto27">
-    <aparece_en rdf:resource="#Juan_Carlos_I"/>
-    <esta_en rdf:resource="#Despacho"/>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto9">
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto9.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+  </Foto>
+  <Lugar rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#OtrosActos"/>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto20">
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto20.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto30">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto30.jpg</urlFoto>
+  </Foto>
+  <Lugar rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Despacho"/>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto21">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto21.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto11">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto11.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Despacho"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto25">
+    <esta_en>
+      <Lugar rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Boda"/>
+    </esta_en>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto25.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto24">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto24.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto10">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto10.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Despacho"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto23">
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Boda"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto23.jpg</urlFoto>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto13">
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#OtrosActos"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto13.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto1">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto1.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Palacio"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Jaime_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto22">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto22.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#OtrosActos"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto12">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto12.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Despacho"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto2">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto2.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Palacio"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto29">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto29.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Palacio"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto15">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto15.jpg</urlFoto>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto3">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Cristina_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Iñaki_Urdangarin"/>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto3.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto28">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto28.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto14">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto14.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Boda"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Elena_Borbon"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto4">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto4.jpg</urlFoto>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto27">
     <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >./fotos/Foto27.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Despacho"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto17">
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Despacho"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto17.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto5">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Letizia_Ortiz"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto5.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Palacio"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto26">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto26.jpg</urlFoto>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto16">
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Grecia"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Carlos_I"/>
+    <esta_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#ActoOficial"/>
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto16.jpg</urlFoto>
+  </Foto>
+  <Foto rdf:about="http://www.owl-ontologies.com/Ontology1402519238.owl#Foto6">
+    <urlFoto rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >./fotos/Foto6.jpg</urlFoto>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Pablo_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Victoria_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Felipe_Marichalar"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Juan_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Irene_Urdangarin"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Leonor_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Sofia_Borbon"/>
+    <aparece_en rdf:resource="http://www.owl-ontologies.com/Ontology1402519238.owl#Miguel_Urdangarin"/>
   </Foto>
 </rdf:RDF>
-
-<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
